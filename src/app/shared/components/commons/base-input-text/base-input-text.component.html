@@ -1,0 +1,23 @@
+<div class="col flex">
+    <label
+        for="data.id"
+        style="
+            min-width: 100px;
+            width: max-content;
+            margin-bottom: unset !important;
+        "
+        class="mr-2 flex align-items-center"
+        >{{ data.label }}</label
+    >
+    <input
+        type="data.type"
+        pInputText
+        [id]="data.id"
+        [name]="data.name"
+        [(ngModel)]="data.value"
+        [readOnly]="data.readonly"
+        class="w-full"
+        [disabled]="data.readonly"
+
+    />
+</div>

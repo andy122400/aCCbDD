@@ -1,13 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { LayoutService } from "../layout/services/app.layout.service";
+import { LayoutService } from '../layout/services/app.layout.service';
 import { MenubarModule } from 'primeng/menubar';
 @Component({
     selector: 'app-topbar',
-    templateUrl: './app.topbar.component.html'
+    templateUrl: './app.topbar.component.html',
 })
 export class AppTopBarComponent {
-
     items!: MenuItem[];
     tieredItems: MenuItem[] = [];
     @ViewChild('menubutton') menuButton!: ElementRef;
@@ -16,9 +15,7 @@ export class AppTopBarComponent {
 
     @ViewChild('topbarmenu') menu!: ElementRef;
 
-    constructor(public layoutService: LayoutService) {
-
-    }
+    constructor(public layoutService: LayoutService) {}
     ngOnInit() {
         this.tieredItems = [
             {
@@ -31,20 +28,19 @@ export class AppTopBarComponent {
                         items: [
                             {
                                 label: 'Customer',
-                                icon: 'pi pi-fw pi-plus'
+                                icon: 'pi pi-fw pi-plus',
                             },
                             {
                                 label: 'Duplicate',
-                                icon: 'pi pi-fw pi-copy'
+                                icon: 'pi pi-fw pi-copy',
                             },
-
-                        ]
+                        ],
                     },
                     {
                         label: 'Edit',
-                        icon: 'pi pi-fw pi-user-edit'
-                    }
-                ]
+                        icon: 'pi pi-fw pi-user-edit',
+                    },
+                ],
             },
             {
                 label: 'Orders',
@@ -52,14 +48,13 @@ export class AppTopBarComponent {
                 items: [
                     {
                         label: 'View',
-                        icon: 'pi pi-fw pi-list'
+                        icon: 'pi pi-fw pi-list',
                     },
                     {
                         label: 'Search',
-                        icon: 'pi pi-fw pi-search'
-                    }
-
-                ]
+                        icon: 'pi pi-fw pi-search',
+                    },
+                ],
             },
             {
                 label: 'Shipments',
@@ -68,18 +63,16 @@ export class AppTopBarComponent {
                     {
                         label: 'Tracker',
                         icon: 'pi pi-fw pi-compass',
-
                     },
                     {
                         label: 'Map',
                         icon: 'pi pi-fw pi-map-marker',
-
                     },
                     {
                         label: 'Manage',
-                        icon: 'pi pi-fw pi-pencil'
-                    }
-                ]
+                        icon: 'pi pi-fw pi-pencil',
+                    },
+                ],
             },
             {
                 label: 'Profile',
@@ -87,19 +80,19 @@ export class AppTopBarComponent {
                 items: [
                     {
                         label: 'Settings',
-                        icon: 'pi pi-fw pi-cog'
+                        icon: 'pi pi-fw pi-cog',
                     },
                     {
                         label: 'Billing',
-                        icon: 'pi pi-fw pi-file'
-                    }
-                ]
+                        icon: 'pi pi-fw pi-file',
+                    },
+                ],
             },
             { separator: true },
             {
                 label: 'Quit',
-                icon: 'pi pi-fw pi-sign-out'
-            }
+                icon: 'pi pi-fw pi-sign-out',
+            },
         ];
 
         this.items = [
@@ -108,27 +101,26 @@ export class AppTopBarComponent {
                 items: [
                     {
                         label: 'New',
-                        icon: 'pi pi-fw pi-plus'
+                        icon: 'pi pi-fw pi-plus',
                     },
                     {
                         label: 'Edit',
-                        icon: 'pi pi-fw pi-user-edit'
-                    }
-                ]
+                        icon: 'pi pi-fw pi-user-edit',
+                    },
+                ],
             },
             {
                 label: 'Orders',
                 items: [
                     {
                         label: 'View',
-                        icon: 'pi pi-fw pi-list'
+                        icon: 'pi pi-fw pi-list',
                     },
                     {
                         label: 'Search',
-                        icon: 'pi pi-fw pi-search'
-                    }
-
-                ]
+                        icon: 'pi pi-fw pi-search',
+                    },
+                ],
             },
             {
                 label: 'Shipments',
@@ -136,20 +128,17 @@ export class AppTopBarComponent {
                     {
                         label: 'Tracker',
                         icon: 'pi pi-fw pi-compass',
-
                     },
                     {
                         label: 'Map',
                         icon: 'pi pi-fw pi-map-marker',
-
                     },
                     {
                         label: 'Manage',
-                        icon: 'pi pi-fw pi-pencil'
-                    }
-                ]
-            }
+                        icon: 'pi pi-fw pi-pencil',
+                    },
+                ],
+            },
         ];
-
-}
+    }
 }

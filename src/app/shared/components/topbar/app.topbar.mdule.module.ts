@@ -14,30 +14,29 @@ import { MegaMenuModule } from 'primeng/megamenu';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { InputTextModule } from 'primeng/inputtext';
 
-
 @NgModule({
-	imports: [
-		CommonModule,
-		// BreadcrumbModule,
-		// MenubarModule,
-		// TabMenuModule,
-		// StepsModule,
-		// TieredMenuModule,
-		// MenuModule,
-		// ButtonModule,
-		// ContextMenuModule,
-		// MegaMenuModule,
-		// PanelMenuModule,
-		// InputTextModule,
-		// RouterModule.forChild([
-		// 	{
-		// 		path: '', component: AppTopBarComponent, children: [
-		// 			{ path: '', redirectTo: 'personal', pathMatch: 'full' }
-		// 		]
-		// 	}
-		// ])
-	],
-	declarations: [],
-	exports: [RouterModule]
+    imports: [
+        CommonModule,
+        // BreadcrumbModule,
+        // MenubarModule,
+        // TabMenuModule,
+        // StepsModule,
+        // TieredMenuModule,
+        // MenuModule,
+        // ButtonModule,
+        // ContextMenuModule,
+        // MegaMenuModule,
+        // PanelMenuModule,
+        // InputTextModule,
+        // RouterModule.forChild([
+        // 	{
+        // 		path: '', component: AppTopBarComponent, children: [
+        // 			{ path: '', redirectTo: 'personal', pathMatch: 'full' }
+        // 		]
+        // 	}
+        // ])
+    ],
+    declarations: [],
+    exports: [RouterModule],
 })
-export class AppTopbarMduleModule { }
+export class AppTopbarMduleModule {}

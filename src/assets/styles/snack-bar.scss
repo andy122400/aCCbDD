@@ -1,0 +1,28 @@
+.cdk-overlay-pane {
+    margin-top: 40px !important;
+}
+
+::ng-deep .snack-bar-success {
+    >div {
+        background: #28a745 !important;
+        color:  #FFF !important;
+        text-align: center;
+    }
+}
+
+::ng-deep .snack-bar-error {
+    >div {
+        background: #FF4d4d !important;
+        color:  #FFF !important;
+        text-align: center;
+    }
+}
+
+
+::ng-deep .snack-bar-warning {
+    >div {
+        background: #ffc107 !important;
+        color:  #0F1824 !important;
+        text-align: center;
+    }
+}

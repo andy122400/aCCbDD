@@ -2,14 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ErrorComponent } from './error.component';
 import { ButtonModule } from 'primeng/button';
-import { AcctonCommonModule } from '../../shared/components/accton-common/accton-common.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ButtonModule,
-        AcctonCommonModule
-    ],
-    declarations: [ErrorComponent,]
+    imports: [CommonModule, ButtonModule, RouterModule],
+    declarations: [ErrorComponent],
 })
-export class ErrorModule { }
+export class ErrorModule {}

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { SidebarModule } from 'primeng/sidebar';
 import { BadgeModule } from 'primeng/badge';
 import { RadioButtonModule } from 'primeng/radiobutton';
@@ -13,8 +14,14 @@ import { AppMenuComponent } from '../menu/app.menu.component';
 import { AppMenuitemComponent } from '../menu/components/app.menuitem.component';
 import { RouterModule } from '@angular/router';
 import { AppTopBarComponent } from '../topbar/app.topbar.component';
-import { AppSidebarComponent } from "../sidebar/app.sidebar.component";
-import { AppLayoutComponent } from "./app.layout.component";
+import { AppSidebarComponent } from '../sidebar/app.sidebar.component';
+import { AppLayoutComponent } from './app.layout.component';
+import { TestComponent } from 'src/app/features/test/test.component';
+import { BaseInputTextComponent } from '../commons/base-input-text/base-input-text.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { BaseDropdownComponent } from '../commons/base-dropdown/base-dropdown.component';
+import { BaseTextAreaComponent } from '../commons/base-text-area/base-text-area.component';
+import { BaseInputNumberComponent } from '../commons/base-input-number/base-input-number.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +30,11 @@ import { AppLayoutComponent } from "./app.layout.component";
         AppMenuComponent,
         AppSidebarComponent,
         AppLayoutComponent,
+        TestComponent,
+        BaseInputTextComponent,
+        BaseDropdownComponent,
+        BaseTextAreaComponent,
+        BaseInputNumberComponent
     ],
     imports: [
         BrowserModule,
@@ -36,7 +48,9 @@ import { AppLayoutComponent } from "./app.layout.component";
         InputSwitchModule,
         RippleModule,
         RouterModule,
+        DropdownModule,
+        InputNumberModule 
     ],
-    exports: [AppLayoutComponent]
+    exports: [AppLayoutComponent],
 })
-export class AppLayoutModule { }
+export class AppLayoutModule {}

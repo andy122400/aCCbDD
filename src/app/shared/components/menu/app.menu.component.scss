@@ -1,0 +1,18 @@
+.layout-sidebar {
+    :host .layout-menu {
+        display: flex;
+        border-bottom: 1px solid #d3d5d7;
+        height: 24px;
+        li {
+            height: 24px;
+            width: calc(100% / 4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid #d3d5d7;
+            &:last-child {
+                border-right: unset !important;
+            }
+        }
+    }
+}

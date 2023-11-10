@@ -1,0 +1,25 @@
+<div class="generate-wrapper">
+    <div *ngFor="let item of items; let i = index">
+        <ng-container *ngIf="item.type === 'list_general'; else otherType">
+            <div
+                class="block bg-primary font-bold text-center p-4 border-round mb-3"
+            >
+                <label>{{ item.label }}</label>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="item.type === 'text'; else otherType">
+            <app-base-input-text [data]="item"></app-base-input-text>
+        </ng-container>
+        <ng-container *ngIf="item.type === 'number'; else otherType">
+            <app-base-input-number [data]="item"></app-base-input-number>
+        </ng-container>
+        <ng-container *ngIf="item.type === 'textarea'; else otherType">
+            <app-base-text-area [data]="item"></app-base-text-area>
+        </ng-container>
+        <ng-container *ngIf="item.type === 'dropdown'; else otherType">
+            <app-base-dropdown [data]="item"></app-base-dropdown>
+        </ng-container>
+        <ng-template #otherType>
+        </ng-template>
+    </div>
+</div>
