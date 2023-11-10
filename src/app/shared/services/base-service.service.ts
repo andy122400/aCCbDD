@@ -18,13 +18,7 @@ export class BaseService {
     apiURL = 'http://localhost:8080';
     private axiosClient: AxiosInstance;
 
-    constructor(
-        private http: HttpClient,
-        private errorHandler: ErrorHandler,
-    ) {
-        this.axiosClient = axios.create({
-            timeout: 2000,
-        });
+    constructor(private http: HttpClient, private errorHandler: ErrorHandler) {
     }
 
     public async callApi<T>(options: any): Promise<T> {
@@ -39,20 +33,14 @@ export class BaseService {
                     Authorization: sessionStorage.getItem('token') || '',
                 },
             });
-            console.log('check aaa :', axiosResponse);
             return axiosResponse.data;
         } catch (error) {
-            console.log('Hello');
-
             console.error(error);
-
             return Promise.reject(this.normalizeError(error));
         }
     }
     private normalizeError(error: any): ErrorResponse {
         this.errorHandler.handleError(error);
-        console.log('Hello');
-
         return {
             id: '-1',
             code: 'UnknownError',

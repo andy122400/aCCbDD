@@ -1,18 +1,55 @@
-.layout-sidebar {
-    :host .layout-menu {
-        display: flex;
-        border-bottom: 1px solid #d3d5d7;
-        height: 24px;
-        li {
-            height: 24px;
-            width: calc(100% / 4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-right: 1px solid #d3d5d7;
-            &:last-child {
-                border-right: unset !important;
+.layout-menu {
+    .admin-tab {
+        min-height: 36px !important;
+        ul {
+            min-height: 36px;
+            height: 100%;
+            li {
+                min-height: 36px;
+                height: 100%;
+                width: calc(100% / 4);
+                border-radius: 6px 6px 0 0;
+                &:nth-child(2) {
+                    width: calc(100% / 2) !important;
+                }
+                cursor: pointer;
+                &:hover {
+                    background-color: #f2f9ff;
+                }
+                &.active {
+                    background-color: #08f;
+                    color: #fff;
+                }
             }
         }
+        border-bottom: 1px solid #d3d5d7;
+    }
+    .menu-content {
+        margin-top: 16px;
+        ::ng-deep .p-panelmenu-panel {
+            margin-bottom: 12px;
+
+            .p-panelmenu-header {
+                border: unset !important;
+                a {
+                    background-color: #FFF;
+                    position: relative;
+                    .p-icon-wrapper {
+                        position: absolute;
+                        right: 10px;
+                        top: auto;
+                    }
+                }
+       
+            }
+        }
+    }
+
+    li {
+        height: 24px;
+        width: calc(100% / 4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

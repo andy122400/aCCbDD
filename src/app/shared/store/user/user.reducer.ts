@@ -1,10 +1,21 @@
-import { Action, createAction, props } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
+import { signIn, signOut, updateUser } from './user.action';
+import UserModel from '../../models/user-model';
 
-export const GetUser = 'User/Get';
+export const initialState: UserModel|undefined = undefined;
 
-export class GetUserAction implements Action {
-    readonly type = GetUser;
-    constructor(public payload: any) {}
-}
-
-export const getUser = createAction(GetUser, props<any>());
+export const userReducers = createReducer(
+  initialState,
+  on(signIn, (_,  payload) => {
+    return payload
+  }),
+  on(signOut, (_) => {
+    return undefined
+  }),
+  on(updateUser, (state, payload) => {
+    return  {
+        ...state,
+        ...payload
+    }
+  })
+);

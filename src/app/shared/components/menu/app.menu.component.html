@@ -1,7 +1,22 @@
-<div>
-    <ul class="layout-menu">
-        <ng-container *ngFor="let item of model; let i = index">
-            <li app-menuitem [item]="item" [index]="i">{{ item }}</li>
-        </ng-container>
-    </ul>
+<div class="layout-menu">
+    <ng-container *ngIf="true; else userMenu">
+        <div class="admin-tab">
+            <ul class="flex" style="width: 100%;">
+                <ng-container *ngFor="let item of adminTaps; let i = index">
+                    <li [item]="item" [class]="[activeTab === item.label ? 'active' : '']" [index]="i" (click)="handleChangeTab(item.label)">{{ item.label }}</li>
+                </ng-container>
+            </ul>
+        </div>
+        <div class="menu-content">
+            <p-panelMenu [model]="optionsByTab" [multiple]="true"></p-panelMenu>
+        </div>
+       
+    </ng-container>
+    <ng-template #userMenu>
+        <ul class="user-menu">
+            <ng-container *ngFor="let item of model; let i = index">
+                <li app-menuitem [item]="item" [index]="i">{{ item }}</li>
+            </ng-container>
+        </ul>
+    </ng-template>
 </div>
