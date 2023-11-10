@@ -6,12 +6,10 @@ export interface MenuChangeEvent {
     routeEvent?: boolean;
 }
 
-
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class MenuService {
-
     private menuSource = new Subject<MenuChangeEvent>();
     private resetSource = new Subject();
 

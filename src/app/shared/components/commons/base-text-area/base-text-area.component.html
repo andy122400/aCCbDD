@@ -1,0 +1,20 @@
+<div class="col flex">
+    <label
+        for="data.id"
+        style="
+            min-width: 100px;
+            width: max-content;
+            margin-bottom: unset !important;
+        "
+        class="mr-2 flex align-items-center"
+        >{{ data.label }}</label
+    >
+    <textarea 
+        [id]="data.id"
+        [rows]="data.row || 0"
+        [cols]="data.cols || 30"
+        pInputTextarea
+        [(ngModel)]="data.value"
+        class="p-inputtextarea p-inputtext p-component p-element ng-pristine ng-valid ng-touched"
+    ></textarea>
+</div>

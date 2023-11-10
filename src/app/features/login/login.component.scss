@@ -1,0 +1,25 @@
+.lines {
+    position: relative;
+    .line {
+        width: 100%;
+        height: 1px;
+        background-color: #d3d5d7;
+        position: absolute;
+        top: 58%;
+    }
+    .text {
+        position: relative;
+        top: -1px;
+        z-index: 6;
+        padding: 0 20px;
+        background: #fff;
+        font-size: 20px;
+        width: 40px;
+        margin: 0 auto;
+    }
+}
+.micrs-btn {
+    background-color: #fff;
+    border-color: #d3d5d7;
+    color: #0f1824;
+}

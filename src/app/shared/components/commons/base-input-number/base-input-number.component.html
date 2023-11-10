@@ -1,0 +1,23 @@
+<div class="col flex">
+    <label
+        for="data.id"
+        style="
+            min-width: 100px;
+            width: max-content;
+            margin-bottom: unset !important;
+        "
+        class="mr-2 flex align-items-center"
+        >{{ data.label }}</label
+    >
+    <p-inputNumber
+        [id]="data.id"
+        [(ngModel)]="data.value"
+        inputId="minmax"
+        mode="decimal"
+        class="w-full"
+    >
+    </p-inputNumber>
+</div>
+
+<!-- [min]="0" -->
+<!-- [max]="100" -->

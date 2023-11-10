@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
+import { RouterModule } from '@angular/router';
 @NgModule({
     imports: [
         CommonModule,
@@ -15,8 +16,9 @@ import { DropdownModule } from 'primeng/dropdown';
         InputTextModule,
         FormsModule,
         PasswordModule,
-        DropdownModule
+        DropdownModule,
+        RouterModule,
     ],
-    declarations: [LoginComponent]
+    declarations: [LoginComponent],
 })
-export class LoginModule { }
+export class LoginModule {}

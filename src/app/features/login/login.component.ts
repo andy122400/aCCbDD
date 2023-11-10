@@ -1,42 +1,55 @@
-import {Component, OnInit} from '@angular/core';
-import {LayoutService} from 'src/app/shared/components/layout/services/app.layout.service';
+import { Component, OnInit } from '@angular/core';
+import { LayoutService } from 'src/app/shared/components/layout/services/app.layout.service';
+import { Snackbar } from 'src/app/shared/services/snackbar.service';
+import { UserService } from 'src/app/shared/services/user-service.service';
+
+export interface LoginRequest {
+    username: string;
+    password: string;
+}
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styles: [`
-        :host ::ng-deep .pi-eye,
-        :host ::ng-deep .pi-eye-slash {
-            transform: scale(1.6);
-            margin-right: 1rem;
-            color: var(--primary-color) !important;
-        }
-    `]
+    styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
-
-    valCheck: string[] = ['remember'];
+export class LoginComponent {
+    username: string;
 
     password!: string;
-    SS: string;
-    selectedOption: string; // 用于存储用户选择的选项
-    dropdownOptions: any[]; // 下拉选项的数组
 
-    cities: any [];
+    isValidPassword: boolean;
 
-    selectedCity: string;
-
-    constructor(public layoutService: LayoutService) {
-
+    constructor(
+        public layoutService: LayoutService,
+        private snackBar: Snackbar,
+        private userService: UserService,
+    ) {
+        this.isValidPassword = true;
     }
 
-    ngOnInit() {
-        this.cities = [
-            {name: 'Accton', code: 'AC'},
-            {name: 'ATVN', code: 'VN'},
-            {name: 'JoyTech', code: 'JT'}
-        ];
+    handleLogin(request: LoginRequest) {
+        this.isValidPassword = true;
+
+        if (!request.username || !request.password) {
+            this.snackBar.showError('Username or password is invalid');
+            return;
+        }
+
+        if (request.password?.length < 8) {
+            this.snackBar.showError('Password is invalid');
+            this.isValidPassword = false;
+            return;
+        }
+        // const options = {
+        //     url: 'http://localhost:8080/api/login',
+        //     method: 'POST',
+        //     data: JSON.stringify(request),
+        // };
+        // this.userService.handleLogin(options);
+        // this.handleCallback();
+        sessionStorage.setItem('token', JSON.stringify({username: 'admin', password: 'admin'}))
     }
 
+    ngOnInit() {}
 }
-
