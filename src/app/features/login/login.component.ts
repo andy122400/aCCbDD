@@ -1,55 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { LayoutService } from 'src/app/shared/components/layout/services/app.layout.service';
-import { Snackbar } from 'src/app/shared/services/snackbar.service';
-import { UserService } from 'src/app/shared/services/user-service.service';
+import {Component, inject,} from '@angular/core';
+import {Snackbar} from 'src/app/shared/services/snackbar.service';
+import {AuthService} from "../../shared/services/auth.service";
 
 export interface LoginRequest {
-    username: string;
-    password: string;
+  username: string;
+  password: string;
 }
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-    username: string;
+  username: string;
+  password!: string;
+  isValidPassword: boolean = true;
+  private authService = inject(AuthService)
+  private snackBar = inject(Snackbar)
 
-    password!: string;
+  async handleLogin(request: LoginRequest) {
+    this.isValidPassword = true;
 
-    isValidPassword: boolean;
-
-    constructor(
-        public layoutService: LayoutService,
-        private snackBar: Snackbar,
-        private userService: UserService,
-    ) {
-        this.isValidPassword = true;
+    if (!request.username || !request.password) {
+      this.snackBar.showError('Username or password is invalid');
+      return;
     }
 
-    handleLogin(request: LoginRequest) {
-        this.isValidPassword = true;
-
-        if (!request.username || !request.password) {
-            this.snackBar.showError('Username or password is invalid');
-            return;
-        }
-
-        if (request.password?.length < 8) {
-            this.snackBar.showError('Password is invalid');
-            this.isValidPassword = false;
-            return;
-        }
-        // const options = {
-        //     url: 'http://localhost:8080/api/login',
-        //     method: 'POST',
-        //     data: JSON.stringify(request),
-        // };
-        // this.userService.handleLogin(options);
-        // this.handleCallback();
-        sessionStorage.setItem('token', JSON.stringify({username: 'admin', password: 'admin'}))
+    if (request.password?.length < 8) {
+      this.snackBar.showError('Password is invalid');
+      this.isValidPassword = false;
+      return;
     }
 
-    ngOnInit() {}
+    await this.authService.login({
+      username: request.username,
+      access_token: btoa(request.password)
+    })
+  }
 }

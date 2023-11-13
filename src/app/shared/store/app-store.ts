@@ -1,10 +1,10 @@
 import { StoreModule } from '@ngrx/store';
-import { userReducers } from './user/user.reducer';
+import { authReducers } from './auth/auth.reducer';
 import { globalReducer } from './global/global.reducer';
 
 
-const AppStore = StoreModule.forRoot({ 
-    user: userReducers,
+const AppStore = StoreModule.forRoot({
+    auth: authReducers,
     global: globalReducer
  })
 
