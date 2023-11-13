@@ -1,15 +1,9 @@
 <div class="wrapper">
-    <div>{{currentScreen}}</div>
-    <!-- <ng-container *ngIf="currentScreen === 'Class'; else otherType">
-        <div
-            class="block bg-primary font-bold text-center p-4 border-round mb-3"
-        >
-            hahahahaha
-        </div>
-    </ng-container>
-    <ng-container *ngIf="currentScreen === 'text'; else otherType">
-        kkkkkkkk
-    </ng-container> -->
-    <ng-template #otherType> </ng-template>
+    <app-classes></app-classes>
+
+    <app-auto-numbers></app-auto-numbers>
+    <app-character-sets></app-character-sets>
+    <app-lists></app-lists>
+    <app-process-extensions></app-process-extensions>
     <router-outlet></router-outlet>
 </div>

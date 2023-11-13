@@ -1,1 +1,125 @@
-<p>classes works!</p>
+<div class="classes-wrapper">
+    <div class="classes-header">
+        <div class="header-left flex">
+            <div class="flex align-items-end">
+                <i class="pi pi-box"></i>
+            </div>
+            <div>Classes</div>
+        </div>
+        <div class="header-right">
+            <div class="icon-close-tab">
+                <i class="pi pi-times" style="font-size: 12px"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="classes-body">
+        <div class="top-actions flex">
+            <div class="icon-create">
+                <i
+                    pTooltip="New subclass"
+                    placeholder="Top"
+                    tooltipPosition="top"
+                    class="pi pi-plus"
+                ></i>
+            </div>
+            <div class="icon-delete">
+                <i
+                    pTooltip="Delete"
+                    placeholder="Top"
+                    tooltipPosition="top"
+                    class="pi pi-times"
+                ></i>
+            </div>
+        </div>
+        <div class="table-content">
+            <p-table [value]="classesData" [resizableColumns]="true" styleClass="p-datatable-gridlines" dataKey="id">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem"></th>
+                        <th pSortableColumn="name">
+                            Name <p-sortIcon field="name"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="description">
+                            Description
+                            <p-sortIcon field="description"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="api-name">
+                            API Name <p-sortIcon field="APIName"></p-sortIcon>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template
+                    pTemplate="body"
+                    let-classItem
+                    let-expanded="expanded"
+                >
+                    <tr>
+                        <td class="chevron-icon">
+                            <button
+                                type="button"
+                                pButton
+                                pRipple
+                                [pRowToggler]="classItem"
+                                class="p-button-text p-button-rounded p-button-plain"
+                                [icon]="
+                                    expanded
+                                        ? 'pi pi-chevron-down'
+                                        : 'pi pi-chevron-right'
+                                "
+                            ></button>
+                        </td>
+                        <td>{{ classItem.name }}</td>
+                        <td>{{ classItem.description }}</td>
+                        <td>{{ classItem.APIName }}</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="rowexpansion" let-classItem>
+                    <tr>
+                        <td colspan="7">
+                            <p-table [value]="classItem.subClass" dataKey="id">
+                                <ng-template pTemplate="body" let-subClassItem>
+                                    <tr>
+                                        <td class="chevron-icon">
+                                            <button
+                                                type="button"
+                                                pButton
+                                                pRipple
+                                                [pRowToggler]="subClassItem"
+                                                class="p-button-text p-button-rounded p-button-plain"
+                                                [icon]="
+                                                    expanded
+                                                        ? 'pi pi-chevron-down'
+                                                        : 'pi pi-chevron-right'
+                                                "
+                                            ></button>
+                                        </td>
+                                        <td>{{ subClassItem.name }}</td>
+                                        <td>{{ subClassItem.description }}</td>
+                                        <td>{{ subClassItem.APIName }}</td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="emptymessage">
+                                    <tr>
+                                        <td colspan="6">
+                                            There are no item for this class
+                                            yet.
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+        <div class="bottom-actions flex justify-content-center">
+            <div class="icon-create">
+                <button>Refresh</button>
+            </div>
+            <div class="icon-delete">
+                <button>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
