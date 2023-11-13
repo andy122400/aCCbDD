@@ -1,0 +1,16 @@
+::ng-deep p-splitter {
+    .p-splitter  {
+        min-height: 100vh !important;
+        height: auto !important;
+    }
+
+    .p-splitter-panel {
+        &:first-child {
+            min-width: 330px !important;
+        }
+        &:last-child {
+            min-width: 50%;
+        }
+    
+    }
+}

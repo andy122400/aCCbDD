@@ -8,6 +8,7 @@ import { AppTopBarComponent } from '../topbar/app.topbar.component';
 @Component({
     selector: 'app-layout',
     templateUrl: './app.layout.component.html',
+    styleUrls: ['./app.layout.component.scss']
 })
 export class AppLayoutComponent implements OnDestroy {
     overlayMenuOpenSubscription: Subscription;
@@ -25,6 +26,7 @@ export class AppLayoutComponent implements OnDestroy {
         public renderer: Renderer2,
         public router: Router,
     ) {
+
         this.overlayMenuOpenSubscription =
             this.layoutService.overlayOpen$.subscribe(() => {
                 if (!this.menuOutsideClickListener) {

@@ -14,20 +14,16 @@ import { HighlightDirective } from './shared/directives/highlight.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { UserService } from './shared/services/user-service.service';
-import { BaseService } from './shared/services/base-service.service';
 import { AppLayoutModule } from './shared/components/layout/app.layout.module';
-import { BaseInputNumberComponent } from './shared/components/commons/base-input-number/base-input-number.component';
-import { UserMainLayoutComponent } from './features/user-site/user-main-layout/user-main-layout.component';
-import { AdminMainLayoutComponent } from './features/admin-site/admin-main-layout/admin-main-layout.component';
-
+import AppStore from './shared/store/app-store';
+import { LayoutMainModule } from './features/layout-main/layout-main.module';
+import { BaseTableComponent } from './shared/components/commons/base-table/base-table.component';
 @NgModule({
     declarations: [
         AppComponent,
         // // Add the custom directive to the declarations array
         HighlightDirective,
-        UserMainLayoutComponent,
-        AdminMainLayoutComponent,
+        BaseTableComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -41,6 +37,8 @@ import { AdminMainLayoutComponent } from './features/admin-site/admin-main-layou
         MaterialModule,
         HttpClientModule,
         AppLayoutModule,
+        LayoutMainModule,
+        AppStore
     ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },

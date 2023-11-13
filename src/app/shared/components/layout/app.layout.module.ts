@@ -16,12 +16,14 @@ import { RouterModule } from '@angular/router';
 import { AppTopBarComponent } from '../topbar/app.topbar.component';
 import { AppSidebarComponent } from '../sidebar/app.sidebar.component';
 import { AppLayoutComponent } from './app.layout.component';
-import { TestComponent } from 'src/app/features/test/test.component';
 import { BaseInputTextComponent } from '../commons/base-input-text/base-input-text.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { BaseDropdownComponent } from '../commons/base-dropdown/base-dropdown.component';
 import { BaseTextAreaComponent } from '../commons/base-text-area/base-text-area.component';
 import { BaseInputNumberComponent } from '../commons/base-input-number/base-input-number.component';
+import { SplitterModule } from 'primeng/splitter';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { LayoutMainModule } from 'src/app/features/layout-main/layout-main.module';
 
 @NgModule({
     declarations: [
@@ -30,11 +32,10 @@ import { BaseInputNumberComponent } from '../commons/base-input-number/base-inpu
         AppMenuComponent,
         AppSidebarComponent,
         AppLayoutComponent,
-        TestComponent,
         BaseInputTextComponent,
         BaseDropdownComponent,
         BaseTextAreaComponent,
-        BaseInputNumberComponent
+        BaseInputNumberComponent,
     ],
     imports: [
         BrowserModule,
@@ -49,7 +50,10 @@ import { BaseInputNumberComponent } from '../commons/base-input-number/base-inpu
         RippleModule,
         RouterModule,
         DropdownModule,
-        InputNumberModule 
+        InputNumberModule,
+        SplitterModule,
+        PanelMenuModule,
+        LayoutMainModule
     ],
     exports: [AppLayoutComponent],
 })

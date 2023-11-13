@@ -1,0 +1,109 @@
+.classes-wrapper {
+    .classes-header {
+        height: 36px;
+        background-color: #08F;
+        border-radius: 6px 6px 0 0;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+        .header-left {
+            color: #FFF;
+            i {
+                margin-right: 4px;
+            }
+        }
+        .header-right {
+            .icon-close-tab {
+                width: 24px;
+                height: 24px;
+                background-color: #FF4F4F;
+                color: #FFF;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+        }
+    }
+    .classes-body {
+        .top-actions  {
+            height: 36px;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            background-color: #F2F9FF;
+            .icon-create {  
+            
+                &:hover {
+                    background-color: #08F;
+                    color: #FFF;
+                    border-radius: 4px;
+                }
+            }
+            .icon-delete {
+                &:hover {
+                    color: #FF4D4D;
+                }
+            }
+            >div {
+                width: 24px;
+                height: 24px; 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+        }
+        .table-content {
+            ::ng-deep tbody {
+                tr {
+                    height: 40px !important;
+                    td {
+                        height: 40px !important;
+                        padding: 4px !important;
+                        .chevron-icon {
+                            width: 48px !important;
+                        }
+                    }
+                }
+            }
+        }
+        .bottom-actions {
+            margin-top: 16px;
+            >div {
+                
+                &:first-child {
+                    margin-right: 16px;
+                    button {
+                        background-color: #FFF;
+                        color: #0F1824;
+                        &:hover {
+                            background-color: #007bff;
+                            color: #FFF;
+                        }
+                    }
+                }
+                &:last-child {
+                    button {
+                        background-color: #FFF;
+                        color: #0F1824;
+                        &:hover {
+                            background-color: #FF4D4D;
+                            color: #FFF;
+                        }
+                    }
+                }
+                button {
+                    width: 100px;
+                    height: 30px;
+                    border: 1px solid #d3d5d7;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+              
+            }
+        }
+    }
+}
