@@ -2,12 +2,14 @@ import {Component, ElementRef, inject, ViewChild} from '@angular/core';
 import {MenuItem} from 'primeng/api';
 import {LayoutService} from '../layout/services/app.layout.service';
 import {AuthService} from "../../services/auth.service";
+import BaseComponent from "../base/base.component";
+import {Snackbar} from "../../services/snackbar.service";
 
 @Component({
   selector: 'app-topbar',
   templateUrl: './app.topbar.component.html',
 })
-export class AppTopBarComponent {
+export class AppTopBarComponent extends BaseComponent {
   items!: MenuItem[];
   tieredItems: MenuItem[] = [];
   @ViewChild('menubutton') menuButton!: ElementRef;
@@ -17,15 +19,26 @@ export class AppTopBarComponent {
   @ViewChild('topbarmenu') menu!: ElementRef;
 
   private authService = inject(AuthService)
-
-  constructor(public layoutService: LayoutService) {
-  }
+  public layoutService = inject(LayoutService)
+  private snackBar = inject(Snackbar)
 
   async logout() {
     await this.authService.logout()
   }
 
-  ngOnInit() {
+  async testToken() {
+    try {
+      const res = await this.apiService.userList()
+      if (res.code === 200) {
+        this.snackBar.showSuccess("Token is working")
+      } else {
+        this.snackBar.showError("Token is expired")
+      }
+    } catch (e) {
+    }
+  }
+
+  override ngOnInit() {
     this.tieredItems = [
       {
         label: 'Customers',

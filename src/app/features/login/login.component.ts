@@ -50,12 +50,14 @@ export class LoginComponent extends BaseComponent {
         company: this.selectedCity.code
       })
 
-      if (res.status === 200) {
-        await this.authService.login(res.data.data)
+      if (res.code === 200) {
+        this.snackBar.showSuccess(res.message)
+        await this.authService.login(res.data)
       } else {
-        // show error
+        this.snackBar.showError(res.message)
       }
     } catch (e) {
+      console.log(e)
       // show error
     } finally {
       this.showLoading(false)
