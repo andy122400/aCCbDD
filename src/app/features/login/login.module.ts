@@ -8,6 +8,7 @@ import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { RouterModule } from '@angular/router';
+import {RippleModule} from "primeng/ripple";
 @NgModule({
     imports: [
         CommonModule,
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
         PasswordModule,
         DropdownModule,
         RouterModule,
+        RippleModule,
     ],
     declarations: [LoginComponent],
 })

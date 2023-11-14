@@ -24,6 +24,7 @@ import { BaseInputNumberComponent } from '../commons/base-input-number/base-inpu
 import { SplitterModule } from 'primeng/splitter';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { LayoutMainModule } from 'src/app/features/layout-main/layout-main.module';
+import {ButtonModule} from "primeng/button";
 
 @NgModule({
     declarations: [
@@ -53,7 +54,8 @@ import { LayoutMainModule } from 'src/app/features/layout-main/layout-main.modul
         InputNumberModule,
         SplitterModule,
         PanelMenuModule,
-        LayoutMainModule
+        LayoutMainModule,
+        ButtonModule
     ],
     exports: [AppLayoutComponent],
 })

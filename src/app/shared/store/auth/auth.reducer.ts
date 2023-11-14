@@ -1,11 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
-import { signIn, signOut, updateUser } from './user.action';
-import UserModel from '../../models/user-model';
+import { signIn, signOut, updateUser } from './auth.action';
+import UserModel from '../../models/user.model';
 
-export const initialState: UserModel|undefined = undefined;
-
-export const userReducers = createReducer(
-  initialState,
+export const authReducers = createReducer<UserModel|undefined>(
+  undefined,
   on(signIn, (_,  payload) => {
     return payload
   }),
