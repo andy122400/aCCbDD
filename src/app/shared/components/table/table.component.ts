@@ -22,7 +22,6 @@ export class TableComponent<TypeRow> implements OnChanges {
     }
 
     onSearch(keyword: string) {
-        console.log("hello", this.columns)
         this.filteredItems = this.dataItems.filter(item => {
             return this.columns.some(column => {
                 return item[column].toString().toLowerCase().includes(keyword.toLowerCase())

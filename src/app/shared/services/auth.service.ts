@@ -19,7 +19,6 @@ export class AuthService {
 
   constructor(private router: Router, private store: Store) {
     this._user$.next(this.getUser())
-    console.log("hello", this.router, this.store)
   }
 
   async login(user: UserModel) {

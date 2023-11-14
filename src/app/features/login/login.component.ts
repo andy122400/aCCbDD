@@ -1,10 +1,12 @@
 import {Component, inject,} from '@angular/core';
 import {Snackbar} from 'src/app/shared/services/snackbar.service';
 import {AuthService} from "../../shared/services/auth.service";
+import BaseComponent from "../../shared/components/base/base.component";
+import {sleep} from "../../shared/utils/utility";
 
-export interface LoginRequest {
-  username: string;
-  password: string;
+interface Company {
+  code: string,
+  name: string,
 }
 
 @Component({
@@ -12,30 +14,51 @@ export interface LoginRequest {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent extends BaseComponent {
   username: string;
   password!: string;
   isValidPassword: boolean = true;
+  cities: Company[] = [
+    {name: 'Accton', code: 'AC'},
+    {name: 'ATVN', code: 'VN'},
+    {name: 'JoyTech', code: 'JT'}
+  ];
+  selectedCity: Company
   private authService = inject(AuthService)
   private snackBar = inject(Snackbar)
 
-  async handleLogin(request: LoginRequest) {
+  async handleLogin() {
     this.isValidPassword = true;
 
-    if (!request.username || !request.password) {
+    if (!this.username || !this.password) {
       this.snackBar.showError('Username or password is invalid');
       return;
     }
 
-    if (request.password?.length < 8) {
+    if (this.password?.length < 8) {
       this.snackBar.showError('Password is invalid');
       this.isValidPassword = false;
       return;
     }
 
-    await this.authService.login({
-      username: request.username,
-      access_token: btoa(request.password)
-    })
+    try {
+      this.showLoading(true)
+      await sleep(2000)
+      const res = await this.apiService.login({
+        user_name: this.username,
+        password: btoa(this.password),
+        company: this.selectedCity.code
+      })
+
+      if (res.status === 200) {
+        await this.authService.login(res.data.data)
+      } else {
+        // show error
+      }
+    } catch (e) {
+      // show error
+    } finally {
+      this.showLoading(false)
+    }
   }
 }
