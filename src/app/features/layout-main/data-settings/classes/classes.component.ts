@@ -10,6 +10,8 @@ export class ClassesComponent {
 
   classesData!: any[];
 
+  openDialog: boolean = false;
+
   constructor() {
     this.classesData = [
       {
@@ -55,6 +57,13 @@ export class ClassesComponent {
         APIName: 'bamboo-watch.jpg',
     },
   ];
+  }
+
+  handleShowDialog () {
+    this.openDialog = true;
+  }
+  handleHideDialog () {
+    this.openDialog = false;
   }
 
   ngOnInit() {

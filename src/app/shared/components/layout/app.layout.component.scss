@@ -10,6 +10,10 @@
         }
         &:last-child {
             min-width: 50%;
+            .layout-main {
+                width: 100%;
+            }
+    
         }
     
     }

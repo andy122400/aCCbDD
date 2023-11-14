@@ -10,13 +10,20 @@ import { AutoNumbersComponent } from './data-settings/auto-numbers/auto-numbers.
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
 import { TableModule } from 'primeng/table';
+import { CommonModule } from '@angular/common';
+import { DialogModule } from 'primeng/dialog';
+import { BaseTableComponent } from 'src/app/shared/components/commons/base-table/base-table.component';
+import { BaseDialogModule } from 'src/app/shared/components/commons/base-dialog/base-dialog.module';
 
 @NgModule({
     imports: [
         RouterModule,
         ButtonModule,
         TooltipModule,
-        TableModule
+        TableModule,
+        CommonModule,
+        DialogModule,
+        BaseDialogModule
     ],
     declarations: [
         LayoutMainComponent, 
@@ -25,7 +32,9 @@ import { TableModule } from 'primeng/table';
         ListsComponent, 
         ProcessExtensionsComponent, 
         CharacterSetsComponent, 
-        AutoNumbersComponent],
+        AutoNumbersComponent,
+        BaseTableComponent,
+        ],
     exports: [LayoutMainComponent]
 })
 export class LayoutMainModule { }

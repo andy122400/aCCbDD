@@ -65,7 +65,12 @@
                             >Password must have more than 8 characters</small
                         >
                     </div>
-
+                    <div class="flex align-items-center justify-content-between mb-4 mt-4 gap-5">
+                        <div class="flex align-items-center">
+                            <label for="company1" class="block text-900 font-medium text-xl mr-3">Company</label>
+                            <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
+                        </div>
+                    </div>
                     <div
                         class="flex align-items-center justify-content-between mt-4"
                     ></div>
@@ -74,18 +79,7 @@
                         pRipple
                         label="Sign In"
                         class="w-full p-3 text-xl"
-                        (click)="handleLogin({ username, password })"
-                    ></button>
-                    <div class="lines mt-3 mb-3">
-                        <div class="line"></div>
-                        <div class="text flex justify-content-center">or</div>
-                    </div>
-                    <button
-                        pButton
-                        pRipple
-                        label="Sign In with Microsoft"
-                        class="w-full p-3 text-xl mt-2 micrs-btn"
-                        [routerLink]="['/']"
+                        (click)="handleLogin({ username, password, selectedCity})"
                     ></button>
                 </div>
             </div>

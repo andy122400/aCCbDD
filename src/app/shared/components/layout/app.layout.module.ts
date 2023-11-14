@@ -16,11 +16,7 @@ import { RouterModule } from '@angular/router';
 import { AppTopBarComponent } from '../topbar/app.topbar.component';
 import { AppSidebarComponent } from '../sidebar/app.sidebar.component';
 import { AppLayoutComponent } from './app.layout.component';
-import { BaseInputTextComponent } from '../commons/base-input-text/base-input-text.component';
 import { DropdownModule } from 'primeng/dropdown';
-import { BaseDropdownComponent } from '../commons/base-dropdown/base-dropdown.component';
-import { BaseTextAreaComponent } from '../commons/base-text-area/base-text-area.component';
-import { BaseInputNumberComponent } from '../commons/base-input-number/base-input-number.component';
 import { SplitterModule } from 'primeng/splitter';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { LayoutMainModule } from 'src/app/features/layout-main/layout-main.module';
@@ -32,10 +28,6 @@ import { LayoutMainModule } from 'src/app/features/layout-main/layout-main.modul
         AppMenuComponent,
         AppSidebarComponent,
         AppLayoutComponent,
-        BaseInputTextComponent,
-        BaseDropdownComponent,
-        BaseTextAreaComponent,
-        BaseInputNumberComponent,
     ],
     imports: [
         BrowserModule,

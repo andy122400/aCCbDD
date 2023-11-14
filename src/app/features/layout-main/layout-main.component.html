@@ -1,9 +1,25 @@
 <div class="wrapper">
-    <app-classes></app-classes>
+    <div [ngSwitch]="currentScreen">
+        <div *ngSwitchCase="'Class'">
+            <app-classes></app-classes>
+        </div>
+        <div *ngSwitchCase="'Character Sets'">
+            <app-character-sets></app-character-sets>
+        </div>
+        <div *ngSwitchCase="'Lists'">
+            <app-lists></app-lists>
+        </div>
+        <div *ngSwitchCase="'Process Extensions'">
+            <app-process-extensions></app-process-extensions>
+        </div>
+        <div *ngSwitchCase="'AutoNumbers'">
+            <app-auto-numbers></app-auto-numbers>
+        </div>
+        <div *ngSwitchCase="'Criteria'">
+            <app-criteria></app-criteria>
+        </div>
+        <div *ngSwitchDefault>No contents</div>
+    </div>
 
-    <app-auto-numbers></app-auto-numbers>
-    <app-character-sets></app-character-sets>
-    <app-lists></app-lists>
-    <app-process-extensions></app-process-extensions>
     <router-outlet></router-outlet>
 </div>

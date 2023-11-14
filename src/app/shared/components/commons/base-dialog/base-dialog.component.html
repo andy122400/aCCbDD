@@ -1,0 +1,7 @@
+<div>
+    <p-dialog [visible]="visible"  [style]="{ width: '70vw' }" (visibleChange)="handleClose()">
+        <p-tabMenu [model]="items" [activeItem]="activeItem">        
+        </p-tabMenu>
+        {{activeItem.label}}
+    </p-dialog>
+</div>

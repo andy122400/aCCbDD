@@ -17,13 +17,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppLayoutModule } from './shared/components/layout/app.layout.module';
 import AppStore from './shared/store/app-store';
 import { LayoutMainModule } from './features/layout-main/layout-main.module';
-import { BaseTableComponent } from './shared/components/commons/base-table/base-table.component';
 @NgModule({
     declarations: [
         AppComponent,
         // // Add the custom directive to the declarations array
         HighlightDirective,
-        BaseTableComponent,
     ],
     imports: [
         AppRoutingModule,
