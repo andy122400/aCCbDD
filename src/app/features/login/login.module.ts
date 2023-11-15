@@ -11,7 +11,6 @@ import {RouterModule} from '@angular/router';
 import {RippleModule} from "primeng/ripple";
 import {DialogModule} from "primeng/dialog";
 import {ProgressSpinnerModule} from "primeng/progressspinner";
-import {AppLayoutModule} from "../../shared/components/layout/app.layout.module";
 
 @NgModule({
   imports: [
@@ -26,7 +25,6 @@ import {AppLayoutModule} from "../../shared/components/layout/app.layout.module"
     RippleModule,
     DialogModule,
     ProgressSpinnerModule,
-    AppLayoutModule,
   ],
   declarations: [LoginComponent],
 })

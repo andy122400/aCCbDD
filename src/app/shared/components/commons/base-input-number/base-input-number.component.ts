@@ -9,4 +9,7 @@ export class BaseInputNumberComponent {
 
   @Input() data: any | undefined;
 
+  constructor(){
+  }
+
 }

@@ -1,1 +1,69 @@
-<p>lists works!</p>
+<div class="lists-wrapper">
+    <div class="lists-header">
+        <div class="icon-list"><i class="pi pi-list"></i></div>
+        <div class="ml-2">Lists</div>
+    </div>
+    <div class="lists-body">
+        <div class="top-actions">
+            <div class="icon-create" (click)="handleShowDialog()">
+                <i
+                    pTooltip="New subclass"
+                    placeholder="Top"
+                    tooltipPosition="top"
+                    class="pi pi-plus"
+                ></i>
+            </div>
+            <div class="icon-delete">
+                <i
+                    pTooltip="Delete"
+                    placeholder="Top"
+                    tooltipPosition="top"
+                    class="pi pi-times"
+                ></i>
+            </div>
+        </div>
+        <div class="lists-filter">
+            <div class="filter-by">
+                <app-base-dropdown [data]="dataDropdown[0]"></app-base-dropdown>
+            </div>
+            <div class="match-if">
+                <app-base-dropdown [data]="dataDropdown[1]"></app-base-dropdown>
+            </div>
+            <div class="search-value flex">
+                <label>Value</label>
+                <input
+                    class="ml-3"
+                    type="text"
+                    pInputText
+                    [(ngModel)]="searchValue"
+                />
+            </div>
+            <div class="apply-btn">
+                <p-button label="Apply"></p-button>
+            </div>
+        </div>
+        <div class="lists-table">
+            <app-table
+                [dataItems]="dataItems"
+                [itemSelected]="itemSelected"
+                (onSelectItem)="handleSelectItem($event)"
+                (onOpenDialogDetal)="handleShowDialogDetail()"
+            ></app-table>
+        </div>
+    </div>
+    <div class="list-footer"></div>
+    <app-dialog-create
+        [options]="options"
+        [visible]="openDialog"
+        header="Create List"
+        (onClose)="handleHideDialog()"
+    ></app-dialog-create>
+    <app-dialog-detail
+        [visible]="openDialogDetail"
+        (onClose)="handleHideDialogDetail()"
+        header="Show Detail Item"
+        [menuTabs]="menuTabs"
+        [itemSelected]="itemSelected"
+        [options]="editOptions"
+    ></app-dialog-detail>
+</div>

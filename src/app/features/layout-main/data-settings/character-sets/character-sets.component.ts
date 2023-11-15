@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./character-sets.component.scss']
 })
 export class CharacterSetsComponent {
-
 }

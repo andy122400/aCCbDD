@@ -1,0 +1,19 @@
+<div class="create-update-wrapper">
+    <div *ngFor="let item of items; let i = index" >
+        <ng-container *ngIf="item.type === 'inputtext' ; else otherType">     
+            <app-base-input-text [data]="item" ></app-base-input-text>
+        </ng-container>
+        <ng-container *ngIf="item.type === 'inputtextarea' ; else otherType">     
+            <app-base-text-area [data]="item" ></app-base-text-area>
+        </ng-container>
+        <ng-container *ngIf="item.type === 'dropdown' ; else otherType">    
+            <app-base-dropdown [data]="item" ></app-base-dropdown>
+        </ng-container>
+        <ng-container *ngIf="item.type === 'inputnumber' ; else otherType">    
+            <app-base-input-number [data]="item" ></app-base-input-number>
+        </ng-container>
+        
+        <ng-template #otherType>
+        </ng-template>
+    </div>
+</div>

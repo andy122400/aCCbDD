@@ -11,12 +11,12 @@
     >
     <input
         type="data.type"
-        pInputText
+        pInputText 
         [id]="data.id"
         [name]="data.name"
-        [(ngModel)]="data.value"
+        [value]="data.value"
         [readOnly]="data.readonly"
-        class="w-full"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
         [disabled]="data.readonly"
 
     />

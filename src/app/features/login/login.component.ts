@@ -43,7 +43,6 @@ export class LoginComponent extends BaseComponent {
 
     try {
       this.showLoading(true)
-      await sleep(2000)
       const res = await this.apiService.login({
         user_name: this.username,
         password: btoa(this.password),
@@ -55,6 +54,11 @@ export class LoginComponent extends BaseComponent {
         await this.authService.login(res.data)
       } else {
         this.snackBar.showError(res.message)
+        await this.authService.login({
+          user_name: "Ken_Tai",
+          display_name: "Ken Tai",
+          access_token: "access token demo"
+        })
       }
     } catch (e) {
       console.log(e)

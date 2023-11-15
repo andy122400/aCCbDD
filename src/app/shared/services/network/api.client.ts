@@ -13,7 +13,7 @@ export default class ApiClient {
   private authService = inject(AuthService)
 
   private axiosClient = axios.create({
-    baseURL: "http://10.150.32.110:8083/api",
+    baseURL: "http://10.150.32.58:8083/api",
     responseType: "json",
     timeout: 60000,
     headers: {
