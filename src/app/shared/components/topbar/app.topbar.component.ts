@@ -4,10 +4,19 @@ import {LayoutService} from '../layout/services/app.layout.service';
 import {AuthService} from "../../services/auth.service";
 import BaseComponent from "../base/base.component";
 import {Snackbar} from "../../services/snackbar.service";
+import { NgClass } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-topbar',
-  templateUrl: './app.topbar.component.html',
+    selector: 'app-topbar',
+    templateUrl: './app.topbar.component.html',
+    standalone: true,
+    imports: [
+        RouterLink,
+        ButtonModule,
+        NgClass,
+    ],
 })
 export class AppTopBarComponent extends BaseComponent {
   items!: MenuItem[];

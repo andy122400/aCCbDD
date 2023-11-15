@@ -8,6 +8,7 @@ import {
 
 @Directive({
     selector: '[appHighlight]',
+    standalone: true,
 })
 export class HighlightDirective {
     @Input() highlightColor: string = 'yellow'; // Default highlight color

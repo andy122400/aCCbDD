@@ -4,6 +4,7 @@ import { Component, Input } from '@angular/core';
     selector: 'app-base-input-text',
     templateUrl: './base-input-text.component.html',
     styleUrls: ['./base-input-text.component.scss'],
+    standalone: true,
 })
 export class BaseInputTextComponent {
     @Input() data: any | undefined;

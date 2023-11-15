@@ -1,9 +1,18 @@
 import { Component } from '@angular/core';
+import { DialogDetailComponent } from '../../../../shared/components/commons/dialog-detail/dialog-detail.component';
+import { DialogCreateComponent } from '../../../../shared/components/commons/dialog-create/dialog-create.component';
+import { TableComponent } from '../../../../shared/components/table/table.component';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+import { BaseDropdownComponent } from '../../../../shared/components/commons/base-dropdown/base-dropdown.component';
 
 @Component({
-  selector: 'app-lists',
-  templateUrl: './lists.component.html',
-  styleUrls: ['./lists.component.scss']
+    selector: 'app-lists',
+    templateUrl: './lists.component.html',
+    styleUrls: ['./lists.component.scss'],
+    standalone: true,
+    imports: [BaseDropdownComponent, FormsModule, InputTextModule, ButtonModule, TableComponent, DialogCreateComponent, DialogDetailComponent]
 })
 export class ListsComponent {
 

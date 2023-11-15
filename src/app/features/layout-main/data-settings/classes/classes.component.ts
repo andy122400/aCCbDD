@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
+import { DialogCreateComponent } from '../../../../shared/components/commons/dialog-create/dialog-create.component';
+import { ButtonModule } from 'primeng/button';
+import { SharedModule } from 'primeng/api';
+import { TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 @Component({
-  selector: 'app-classes',
-  templateUrl: './classes.component.html',
-  styleUrls: ['./classes.component.scss']
+    selector: 'app-classes',
+    templateUrl: './classes.component.html',
+    styleUrls: ['./classes.component.scss'],
+    standalone: true,
+    imports: [TooltipModule, TableModule, SharedModule, ButtonModule, DialogCreateComponent]
 })
 export class ClassesComponent {
 

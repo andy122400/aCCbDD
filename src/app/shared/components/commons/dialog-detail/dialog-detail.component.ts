@@ -1,9 +1,14 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CreateUpdateTableComponent } from '../create-update-table/create-update-table.component';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
-  selector: 'app-dialog-detail',
-  templateUrl: './dialog-detail.component.html',
-  styleUrls: ['./dialog-detail.component.scss']
+    selector: 'app-dialog-detail',
+    templateUrl: './dialog-detail.component.html',
+    styleUrls: ['./dialog-detail.component.scss'],
+    standalone: true,
+    imports: [DialogModule, TabMenuModule, CreateUpdateTableComponent]
 })
 export class DialogDetailComponent {
   @Input({required: true}) visible : boolean = false;

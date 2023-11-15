@@ -5,11 +5,21 @@ import { Store } from '@ngrx/store';
 import { changeScreen } from '../../store/global/global.actions';
 import { Observable } from 'rxjs';
 import { InitGlobalState } from '../../store/global/global.reducer';
+import { AppMenuitemComponent } from './components/app.menuitem.component';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
     selector: 'app-menu',
     templateUrl: './app.menu.component.html',
     styleUrls: ['./app.menu.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        NgFor,
+        PanelMenuModule,
+        AppMenuitemComponent,
+    ],
 })
 export class AppMenuComponent implements OnInit {
     model: any[] = [];

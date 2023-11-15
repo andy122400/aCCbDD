@@ -3,6 +3,15 @@ import {Snackbar} from 'src/app/shared/services/snackbar.service';
 import {AuthService} from "../../shared/services/auth.service";
 import BaseComponent from "../../shared/components/base/base.component";
 import {sleep} from "../../shared/utils/utility";
+import { RippleModule } from 'primeng/ripple';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { PasswordModule } from 'primeng/password';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { DialogModule } from 'primeng/dialog';
 
 interface Company {
   code: string,
@@ -10,9 +19,22 @@ interface Company {
 }
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    standalone: true,
+    imports: [
+        DialogModule,
+        ProgressSpinnerModule,
+        FormsModule,
+        InputTextModule,
+        PasswordModule,
+        NgIf,
+        DropdownModule,
+        ButtonModule,
+        RippleModule,
+        AsyncPipe,
+    ],
 })
 export class LoginComponent extends BaseComponent {
   username: string;

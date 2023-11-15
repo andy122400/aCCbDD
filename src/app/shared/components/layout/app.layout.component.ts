@@ -1,14 +1,20 @@
 import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { LayoutService } from './services/app.layout.service';
 import { AppSidebarComponent } from '../sidebar/app.sidebar.component';
 import { AppTopBarComponent } from '../topbar/app.topbar.component';
+import { LayoutMainComponent } from '../../../features/layout-main/layout-main.component';
+import { SharedModule } from 'primeng/api';
+import { SplitterModule } from 'primeng/splitter';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-layout',
     templateUrl: './app.layout.component.html',
-    styleUrls: ['./app.layout.component.scss']
+    styleUrls: ['./app.layout.component.scss'],
+    standalone: true,
+    imports: [NgClass, AppTopBarComponent, SplitterModule, SharedModule, AppSidebarComponent, LayoutMainComponent, RouterOutlet]
 })
 export class AppLayoutComponent implements OnDestroy {
     overlayMenuOpenSubscription: Subscription;
