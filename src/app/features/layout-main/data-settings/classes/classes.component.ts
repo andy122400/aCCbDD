@@ -10,6 +10,24 @@ export class ClassesComponent {
 
   classesData!: any[];
 
+  openDialog: boolean = false;
+
+  options  = [
+    { type : 'inputtext',label:'Name',id: 1, name: 'a01' , value: '', readonly:false },
+    { type : 'inputtext',label:'API Name',id: 2, name: '' , value: '', readonly:true },
+    { type : 'inputtextarea',label:'Description',id: 3, name: '' , value: '', rows: 1 },  
+    { type : 'dropdown', label:'Enable',id: 4, options: [
+      {id: 1, name: 'Disable'}, 
+      {id: 2, name: 'Enable'}
+    ] , selectItem: {id: 2, name: 'Enable'},readonly: false },
+    { type : 'dropdown',label:'List Type',id: 5, options: [
+      {id: 1, name: 'Simple'}, 
+      {id: 2, name: 'Cascade'},
+      {id: 3, name: 'Dynamic'}
+    ] , selectItem: {id: 1, name: 'Simple'} , readonly: false },
+    { type : 'inputtext',label:'Criteria',id: 6, name: '' , value: '', readonly: true },
+    // { type : 'inputnumber',label:'Number',id: 7, name: '' , value: 0 , readonly: false },
+  ];
   constructor() {
     this.classesData = [
       {
@@ -55,6 +73,13 @@ export class ClassesComponent {
         APIName: 'bamboo-watch.jpg',
     },
   ];
+  }
+
+  handleShowDialog () {
+    this.openDialog = true;
+  }
+  handleHideDialog () {
+    this.openDialog = false;
   }
 
   ngOnInit() {

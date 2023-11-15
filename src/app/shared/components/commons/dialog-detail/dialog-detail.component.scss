@@ -1,0 +1,35 @@
+.dialog-detail-wrapper {
+    ::ng-deep .p-dialog-header {
+        background-color: #08F !important;
+        padding: 8px 16px !important;
+        color: #FFF;
+    }
+    ::ng-deep .p-dialog-content {
+        .top-action {
+            height: 30px !important;
+            display: flex;
+            align-items: center;
+            .icon-delete {
+                cursor: pointer;
+                &:hover {
+                    color: #ff4d4d;
+                }
+            }
+        }
+    }
+    ::ng-deep .dialog-body {
+        .p-tabmenu-nav {
+            .p-element {
+                a {
+                    color: #0F1824;
+                    font-weight: 400;
+                }
+            }
+        }
+        .contents {
+            width: 100%;
+            min-height: 30vh;
+            height: auto;
+        }
+    }
+}

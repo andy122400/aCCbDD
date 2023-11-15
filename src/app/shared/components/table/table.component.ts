@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'app-table',
@@ -7,7 +7,10 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 })
 export class TableComponent<TypeRow> implements OnChanges {
     @Input({required: true}) dataItems: TypeRow[];
-
+    @Input({required: false}) itemSelected: any = {};
+   
+    @Output() onOpenDialogDetal = new EventEmitter<boolean>();
+    @Output() onSelectItem = new EventEmitter<{}>();
     filteredItems: TypeRow[];
     columns: string[] = [];
 
@@ -15,6 +18,9 @@ export class TableComponent<TypeRow> implements OnChanges {
     //     this.columns = Object.keys(this.dataItems[0]);
     //     this.filteredItems = [...this.dataItems];
     // }
+    constructor(){
+    }
+
 
     ngOnChanges(changes: SimpleChanges) {
         this.columns = Object.keys(this.dataItems[0]);
@@ -22,7 +28,6 @@ export class TableComponent<TypeRow> implements OnChanges {
     }
 
     onSearch(keyword: string) {
-        console.log("hello", this.columns)
         this.filteredItems = this.dataItems.filter(item => {
             return this.columns.some(column => {
                 return item[column].toString().toLowerCase().includes(keyword.toLowerCase())
@@ -31,6 +36,11 @@ export class TableComponent<TypeRow> implements OnChanges {
         console.log(this.filteredItems.length)
     }
 
-
-
+    onShowDialogDetail(){
+        this.onOpenDialogDetal.emit(true)
+    }
+    handleSelectItem(item: {}){
+        console.log("check item :", item);
+        this.onSelectItem.emit(item)
+    }
 }

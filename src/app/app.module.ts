@@ -16,21 +16,17 @@ import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppLayoutModule } from './shared/components/layout/app.layout.module';
 import AppStore from './shared/store/app-store';
-import { LayoutMainModule } from './features/layout-main/layout-main.module';
-import { BaseTableComponent } from './shared/components/commons/base-table/base-table.component';
-import {TableComponent} from "./shared/components/table/table.component";
 import {ButtonModule} from "primeng/button";
 import {RippleModule} from "primeng/ripple";
 import {InputTextModule} from "primeng/inputtext";
 import {TableModule} from "primeng/table";
 import {ScrollTopModule} from "primeng/scrolltop";
+import { BaseTableModule } from './shared/components/table/table.module';
 @NgModule({
     declarations: [
         AppComponent,
         // // Add the custom directive to the declarations array
         HighlightDirective,
-        BaseTableComponent,
-        TableComponent,
     ],
     imports: [
         AppRoutingModule,
@@ -44,13 +40,13 @@ import {ScrollTopModule} from "primeng/scrolltop";
         MaterialModule,
         HttpClientModule,
         AppLayoutModule,
-        LayoutMainModule,
         AppStore,
         ButtonModule,
         RippleModule,
         InputTextModule,
         TableModule,
-        ScrollTopModule
+        ScrollTopModule,
+        BaseTableModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },

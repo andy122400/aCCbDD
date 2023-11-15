@@ -1,0 +1,15 @@
+<div class="dialog-detail-wrapper">
+    <p-dialog [header]="itemSelected.Name" [visible]="visible"  [style]="{ width: '70vw', height: '70vh' }" (visibleChange)="handleClose()" modal="modal">
+        <div class="top-action">
+            <div class="icon-delete"> <i class="pi pi-times" style="font-size: 14px"></i></div>
+        </div>
+        <div class="dialog-body">
+            <p-tabMenu [model]="menuTabs" [activeItem]="activeItem" (click)="getActiveItem($event)">        
+            </p-tabMenu>
+            
+        <div class="contents">
+            <app-create-update-table [items]="options"></app-create-update-table>
+        </div>
+        </div>
+    </p-dialog>
+</div>

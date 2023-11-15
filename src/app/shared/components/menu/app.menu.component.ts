@@ -54,10 +54,12 @@ export class AppMenuComponent implements OnInit {
             {
                 id: 1,
                 label: 'Search',
+                command: () => {this.handleChangeScreen('')}
             },
             {
                 id: 2,
-                label: 'Analytics and Reports'
+                label: 'Analytics and Reports',
+                command: () => {this.handleChangeScreen('')}
             },
             {
                 id: 3,
@@ -69,7 +71,7 @@ export class AppMenuComponent implements OnInit {
                      
                         items: [
                             {id: 1, label: 'Class', command: () => {this.handleChangeScreen('Class')}},
-                            {id: 2, label: 'Character Set', command: () => {this.handleChangeScreen('Character Set')}},
+                            {id: 2, label: 'Character Sets', command: () => {this.handleChangeScreen('Character Sets')}},
                             {id: 3, label: 'Lists', command: () => {this.handleChangeScreen('Lists')}},
                             {id: 4, label: 'Process Extensions', command: () => {this.handleChangeScreen('Process Extensions')}},
                             {id: 5, label: 'AutoNumbers', command: () => {this.handleChangeScreen('AutoNumbers')}},
@@ -80,61 +82,61 @@ export class AppMenuComponent implements OnInit {
                         id: 2, 
                         label: 'Workflow Settings', 
                         items: [
-                            {id: 1, label: 'workflow'},
+                            {id: 1, label: 'workflow', command: () => {this.handleChangeScreen('workflow')}},
                         ]
                     },
                     { 
                         id: 3, 
                         label: 'User Settings',
                         items: [
-                            {id: 1, label: 'Account Policy'},
-                            {id: 2, label: 'Users'},
-                            {id: 3, label: 'User Groups'},
-                            {id: 4, label: 'Supplier Groups'},
-                            {id: 5, label: 'Roles'},
-                            {id: 6, label: 'Privileges'},
-                            {id: 7, label: 'User Monitor'},
-                            {id: 8, label: 'Delete Users'},
-                            {id: 9, label: 'Delete User Groups'}
+                            {id: 1, label: 'Account Policy', command: () => {this.handleChangeScreen('Account Policy')}},
+                            {id: 2, label: 'Users', command: () => {this.handleChangeScreen('Users')}},
+                            {id: 3, label: 'User Groups', command: () => {this.handleChangeScreen('User Groups')}},
+                            {id: 4, label: 'Supplier Groups', command: () => {this.handleChangeScreen('Supplier Groups')}},
+                            {id: 5, label: 'Roles', command: () => {this.handleChangeScreen('Roles')}},
+                            {id: 6, label: 'Privileges', command: () => {this.handleChangeScreen('Privileges')}},
+                            {id: 7, label: 'User Monitor', command: () => {this.handleChangeScreen('User Monitor')}},
+                            {id: 8, label: 'Delete Users', command: () => {this.handleChangeScreen('Delete Users')}},
+                            {id: 9, label: 'Delete User Groups', command: () => {this.handleChangeScreen('Delete User Groups')}}
                         ]
                     },
                     { 
                         id: 4, 
                         label: 'System Settings',
                         items: [
-                            {id: 1, label: 'SmartRules'},
-                            {id: 2, label: 'Viewers & Files'},
-                            {id: 3, label: 'Notification'},
-                            {id: 4, label: 'Full Text Search'},
-                            {id: 5, label: 'My Assignments'},
-                            {id: 6, label: 'UOM'},
-                            {id: 7, label: 'Company Profile'},
-                            {id: 8, label: 'Current Exchange Rates'},
-                            {id: 9, label: 'Dashboard Management'},
-                            {id: 10, label: 'Product Portfolio Management'},
-                            {id: 11, label: 'Agile Content Service'},
-                            {id: 12, label: 'Event Management'}
+                            {id: 1, label: 'SmartRules', command: () => {this.handleChangeScreen('SmartRules')}},
+                            {id: 2, label: 'Viewers & Files', command: () => {this.handleChangeScreen('Viewers & Files')}},
+                            {id: 3, label: 'Notification', command: () => {this.handleChangeScreen('Notification')}},
+                            {id: 4, label: 'Full Text Search', command: () => {this.handleChangeScreen('Full Text Search')}},
+                            {id: 5, label: 'My Assignments', command: () => {this.handleChangeScreen('My Assignments')}},
+                            {id: 6, label: 'UOM', command: () => {this.handleChangeScreen('UOM')}},
+                            {id: 7, label: 'Company Profile', command: () => {this.handleChangeScreen('Company Profile')}},
+                            {id: 8, label: 'Current Exchange Rates', command: () => {this.handleChangeScreen('Current Exchange Rates')}},
+                            {id: 9, label: 'Dashboard Management', command: () => {this.handleChangeScreen('Dashboard Management')}},
+                            {id: 10, label: 'Product Portfolio Management', command: () => {this.handleChangeScreen('Product Portfolio Management')}},
+                            {id: 11, label: 'Agile Content Service', command: () => {this.handleChangeScreen('Agile Content Service')}},
+                            {id: 12, label: 'Event Management', command: () => {this.handleChangeScreen('Event Management')}}
                         ]
                     },
                     {
                         id : 5, 
                         label: 'Server Settings',
                         items: [
-                            {id: 1, label: 'Locations'},
-                            {id: 2, label: 'Database'},
-                            {id: 3, label: 'LDAP'},
-                            {id: 4, label: 'Preferences'},
-                            {id: 5, label: 'Licenses'},
-                            {id: 6, label: 'Task Monitor'},
-                            {id: 7, label: 'Task Configuration'}
+                            {id: 1, label: 'Locations', command: () => {this.handleChangeScreen('Locations')}},
+                            {id: 2, label: 'Database', command: () => {this.handleChangeScreen('Database')}},
+                            {id: 3, label: 'LDAP', command: () => {this.handleChangeScreen('LDAP')}},
+                            {id: 4, label: 'Preferences', command: () => {this.handleChangeScreen('Preferences')}},
+                            {id: 5, label: 'Licenses', command: () => {this.handleChangeScreen('Licenses')}},
+                            {id: 6, label: 'Task Monitor', command: () => {this.handleChangeScreen('Task Monitor')}},
+                            {id: 7, label: 'Task Configuration', command: () => {this.handleChangeScreen('Task Configuration')}}
                         ]},
                     {
                         id: 6, 
                         label: 'Examples',
                         items: [
-                            {id: 1, label: 'Example Roles'},
-                            {id: 2, label: 'Example Privileges'},
-                            {id: 3, label: 'Example Criteria'}
+                            {id: 1, label: 'Example Roles', command: () => {this.handleChangeScreen('Example Roles')}},
+                            {id: 2, label: 'Example Privileges', command: () => {this.handleChangeScreen('Example Privileges')}},
+                            {id: 3, label: 'Example Criteria', command: () => {this.handleChangeScreen('Example Criteria')}}
                         ]
                     },
                 ]
