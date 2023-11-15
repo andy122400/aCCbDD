@@ -1,3 +1,12 @@
+<p-dialog
+  [visible]="loading$ | async"
+  [showHeader]="false"
+  [resizable]="false"
+  [modal]="true"
+  [focusOnShow]="false" >
+  <p-progressSpinner></p-progressSpinner>
+</p-dialog>
+
 <div
     class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden"
 >
@@ -35,9 +44,9 @@
                 <div>
                     <label
                         for="email1"
-                        class="block text-900 text-xl font-medium mb-2"
-                        >Name</label
-                    >
+                        class="block text-900 text-xl font-medium mb-2">
+                      Username
+                    </label>
                     <input
                         id="email1"
                         type="text"
@@ -69,24 +78,22 @@
                     <div
                         class="flex align-items-center justify-content-between mt-4"
                     ></div>
-                    <button
-                        pButton
-                        pRipple
-                        label="Sign In"
-                        class="w-full p-3 text-xl"
-                        (click)="handleLogin({ username, password })"
-                    ></button>
-                    <div class="lines mt-3 mb-3">
-                        <div class="line"></div>
-                        <div class="text flex justify-content-center">or</div>
+
+
+                  <div class="flex align-items-center justify-content-between mb-4 mt-4 gap-5">
+                    <div class="flex align-items-center">
+                      <label class="block text-900 font-medium text-xl mr-3">Company</label>
+                      <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name"></p-dropdown>
                     </div>
-                    <button
-                        pButton
-                        pRipple
-                        label="Sign In with Microsoft"
-                        class="w-full p-3 text-xl mt-2 micrs-btn"
-                        [routerLink]="['/']"
-                    ></button>
+                  </div>
+
+                  <button
+                    pButton
+                    pRipple
+                    label="Sign In"
+                    class="w-full p-3 text-xl"
+                    (click)="handleLogin()"
+                  ></button>
                 </div>
             </div>
         </div>

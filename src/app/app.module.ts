@@ -25,36 +25,36 @@ import {InputTextModule} from "primeng/inputtext";
 import {TableModule} from "primeng/table";
 import {ScrollTopModule} from "primeng/scrolltop";
 @NgModule({
-    declarations: [
-        AppComponent,
-        // // Add the custom directive to the declarations array
-        HighlightDirective,
-        BaseTableComponent,
-        TableComponent,
-    ],
-    imports: [
-        AppRoutingModule,
-        FormsModule,
-        ReactiveFormsModule,
-        CommonModule,
-        LoginModule,
-        AccessModule,
-        ErrorModule,
-        BrowserAnimationsModule,
-        MaterialModule,
-        HttpClientModule,
-        AppLayoutModule,
-        LayoutMainModule,
-        AppStore,
-        ButtonModule,
-        RippleModule,
-        InputTextModule,
-        TableModule,
-        ScrollTopModule
-    ],
-    providers: [
-        { provide: LocationStrategy, useClass: PathLocationStrategy },
-    ],
-    bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    // // Add the custom directive to the declarations array
+    HighlightDirective,
+    BaseTableComponent,
+    TableComponent,
+  ],
+  imports: [
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    LoginModule,
+    AccessModule,
+    ErrorModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    HttpClientModule,
+    AppLayoutModule,
+    LayoutMainModule,
+    AppStore,
+    ButtonModule,
+    RippleModule,
+    InputTextModule,
+    TableModule,
+    ScrollTopModule
+  ],
+  providers: [
+    {provide: LocationStrategy, useClass: PathLocationStrategy},
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

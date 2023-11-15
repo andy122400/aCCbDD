@@ -57,6 +57,6 @@ import {ButtonModule} from "primeng/button";
         LayoutMainModule,
         ButtonModule
     ],
-    exports: [AppLayoutComponent],
+    exports: [AppLayoutComponent, BaseDropdownComponent],
 })
 export class AppLayoutModule {}
