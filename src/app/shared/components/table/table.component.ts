@@ -18,41 +18,30 @@ import { TableModule } from 'primeng/table';
     ],
 })
 export class TableComponent<TypeRow> implements OnChanges {
-    @Input({required: true}) dataItems: TypeRow[];
-    @Input({required: false}) itemSelected: any = {};
-   
-    @Output() onOpenDialogDetal = new EventEmitter<boolean>();
-    @Output() onSelectItem = new EventEmitter<{}>();
+    @Input({required: true}) dataItems!: TypeRow[];
+    @Input() itemSelected?: TypeRow;
+    @Input() columnVisible?: string[];
+
+    @Output() onOpenDialogDetail = new EventEmitter<TypeRow>();
+    @Output() onSelectItem = new EventEmitter<TypeRow>();
+
     filteredItems: TypeRow[];
     columns: string[] = [];
 
-    // ngOnInit() {
-    //     this.columns = Object.keys(this.dataItems[0]);
-    //     this.filteredItems = [...this.dataItems];
-    // }
-    constructor(){
-    }
-
-
     ngOnChanges(changes: SimpleChanges) {
-        this.columns = Object.keys(this.dataItems[0]);
+        this.columns = Object.keys(this.dataItems[0]).filter((field) => {
+            if (this.columnVisible) {
+                return this.columnVisible.includes(field);
+            }
+            return true
+        });
         this.filteredItems = [...this.dataItems];
     }
 
-    onSearch(keyword: string) {
-        this.filteredItems = this.dataItems.filter(item => {
-            return this.columns.some(column => {
-                return item[column].toString().toLowerCase().includes(keyword.toLowerCase())
-            });
-        });
-        console.log(this.filteredItems.length)
+    handleShowDialogDetail(item: TypeRow){
+        this.onOpenDialogDetail.emit(item)
     }
-
-    onShowDialogDetail(){
-        this.onOpenDialogDetal.emit(true)
-    }
-    handleSelectItem(item: {}){
-        console.log("check item :", item);
+    handleSelectItem(item: TypeRow){
         this.onSelectItem.emit(item)
     }
 }

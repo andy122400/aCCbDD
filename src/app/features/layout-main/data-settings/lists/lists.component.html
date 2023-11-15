@@ -46,8 +46,9 @@
             <app-table
                 [dataItems]="dataItems"
                 [itemSelected]="itemSelected"
+                [columnVisible]="columnVisible"
                 (onSelectItem)="handleSelectItem($event)"
-                (onOpenDialogDetal)="handleShowDialogDetail()"
+                (onOpenDialogDetail)="handleShowDialogDetail($event)"
             ></app-table>
         </div>
     </div>
