@@ -2,7 +2,6 @@ import {Component, inject,} from '@angular/core';
 import {Snackbar} from 'src/app/shared/services/snackbar.service';
 import {AuthService} from "../../shared/services/auth.service";
 import BaseComponent from "../../shared/components/base/base.component";
-import {sleep} from "../../shared/utils/utility";
 import { RippleModule } from 'primeng/ripple';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
@@ -76,11 +75,6 @@ export class LoginComponent extends BaseComponent {
         await this.authService.login(res.data)
       } else {
         this.snackBar.showError(res.message)
-        await this.authService.login({
-          user_name: "Ken_Tai",
-          display_name: "Ken Tai",
-          access_token: "access token demo"
-        })
       }
     } catch (e) {
       console.log(e)

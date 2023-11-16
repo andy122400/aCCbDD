@@ -12,7 +12,12 @@
         <ng-container *ngIf="item.type === 'inputnumber' ; else otherType">    
             <app-base-input-number [data]="item" ></app-base-input-number>
         </ng-container>
-        
+        <ng-container *ngIf="item.type === 'checkbox' ; else otherType">    
+            <div class="flex align-items-center gap-1">
+                <p-checkbox [name]="data.name" [(ngModel)]="data.value" [inputId]="data.id"></p-checkbox>
+                <label [for]="data.id">{{data.label}}</label>
+        </div>
+        </ng-container>
         <ng-template #otherType>
         </ng-template>
     </div>

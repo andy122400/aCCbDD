@@ -19,22 +19,136 @@ export class ClassesComponent {
 
   openDialog: boolean = false;
 
-  options  = [
-    { type : 'inputtext',label:'Name',id: 1, name: 'a01' , value: '', readonly:false },
-    { type : 'inputtext',label:'API Name',id: 2, name: '' , value: '', readonly:true },
-    { type : 'inputtextarea',label:'Description',id: 3, name: '' , value: '', rows: 1 },  
-    { type : 'dropdown', label:'Enable',id: 4, options: [
-      {id: 1, name: 'Disable'}, 
-      {id: 2, name: 'Enable'}
-    ] , selectItem: {id: 2, name: 'Enable'},readonly: false },
-    { type : 'dropdown',label:'List Type',id: 5, options: [
-      {id: 1, name: 'Simple'}, 
-      {id: 2, name: 'Cascade'},
-      {id: 3, name: 'Dynamic'}
-    ] , selectItem: {id: 1, name: 'Simple'} , readonly: false },
-    { type : 'inputtext',label:'Criteria',id: 6, name: '' , value: '', readonly: true },
+  createOptions  = [
+    { 
+        type : 'dropdown',
+        label:'Class',
+        id: 1, 
+        name: '' , 
+        options: [
+          {id: 1, name: 'Activities'}, 
+          {id: 2, name: 'Part'},
+          {id: 3, name: 'Problem Reports'}
+          ] , 
+        selectItem: {id: 1, name: 'Activities'},
+        readonly:false 
+    },
+    { 
+        type : 'dropdown',
+        label:'Part Subtype',
+        id: 2, 
+        options: [
+            {id: 1, name: 'Model'}, 
+            {id: 2, name: 'Option Class'},
+            {id: 3, name: 'Part'}
+            ] , 
+          selectItem: {id: 3, name: 'Part'},
+        readonly: false 
+    },
+    { 
+        type : 'inputtext',
+        label:'Name',
+        id: 3,
+        name: '' , 
+        value: '', 
+        readonly: false 
+    },  
+    { 
+        type : 'inputtext', 
+        label:'API Name',
+        id: 4, 
+        name: '',
+        value: '',
+        readonly: false 
+    },
+    { 
+        type : 'inputtextarea',
+        label:'Description',
+        id: 5, 
+        name: '',
+        value: '',
+        row: 3,
+        readonly: false 
+    },
+    { 
+        type : 'dropdown',
+        label:'Enable',
+        id: 6, 
+        options: [
+            {id: 1, name: 'No'}, 
+            {id: 2, name: 'Yes'},
+            ] , 
+        selectItem: {id: 2, name: 'Yes'},
+        readonly: false 
+    },
+    { 
+        type : 'inputtext',
+        label: 'Icon',
+        id: 7, 
+        name: '' , 
+        value: '', 
+        readonly:false,
+    },
+    { 
+        type : 'inputtext',
+        label:'Icon for Assembly',
+        id: 8, 
+        name: '' , 
+        value: '', 
+        readonly:false 
+    },
+    { 
+        type : 'inputtext',
+        label:'AutoNumber Source',
+        id: 9, 
+        name: '' , 
+        value: '', 
+        readonly:false 
+    },
+    {
+        type: 'checkbox',
+        label: 'Autonumber Required',
+        id: 10,
+        name: '',
+        value: false,
+        readonly: false
+    },
+    { 
+        type : 'dropdown',
+        label:'AutoGenerate',
+        id: 10, 
+        options: [
+            {id: 1, name: 'No'}, 
+            {id: 2, name: 'Yes'},
+            ] , 
+        selectItem: {id: 1, name: 'No'},
+        readonly: false 
+    },
+    { 
+        type : 'dropdown',
+        label:'Enable',
+        id: 6, 
+        options: [
+            {id: 1, name: 'No'}, 
+            {id: 2, name: 'Yes'},
+            ] , 
+        selectItem: {id: 2, name: 'Yes'},
+        readonly: false 
+    },
+    { 
+        type : 'dropdown',
+        label:'Site-Specific BOM',
+        id: 11, 
+        options: [
+            {id: 1, name: 'Allow'}, 
+            {id: 2, name: 'Disallow'},
+            ] , 
+        selectItem: {id: 1, name: 'Allow'},
+        readonly:false 
+    },
     // { type : 'inputnumber',label:'Number',id: 7, name: '' , value: 0 , readonly: false },
-  ];
+];
+
   constructor() {
     this.classesData = [
       {

@@ -15,6 +15,7 @@ export class DialogCreateComponent {
   @Input() header : string = 'Create List';
   @Output() onClose = new EventEmitter<any>();
   @Input() options: any[] | undefined;
+  @Output() onSave = new EventEmitter<any>();
 
   constructor () {
    
@@ -22,5 +23,9 @@ export class DialogCreateComponent {
 
   handleClose(){
     this.onClose.emit(false);
+  }
+
+  handleSave(){
+    this.onSave.emit(this.options)
   }
 }

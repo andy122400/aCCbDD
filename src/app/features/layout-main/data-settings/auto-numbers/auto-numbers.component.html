@@ -1,0 +1,50 @@
+<div class="auto-numbers-wrapper">
+    <div class="auto-numbers-header">
+        <div class="icon-list"><i class="pi pi-list"></i></div>
+        <div class="ml-2">AutoNumbers</div>
+    </div>
+    <div class="auto-numbers-body">
+        <div class="top-actions">
+            <div class="icon-create" (click)="handleShowDialog()">
+                <i
+                    pTooltip="New subclass"
+                    placeholder="Top"
+                    tooltipPosition="top"
+                    class="pi pi-plus"
+                ></i>
+            </div>
+            <div class="icon-delete">
+                <i
+                    pTooltip="Delete"
+                    placeholder="Top"
+                    tooltipPosition="top"
+                    class="pi pi-times"
+                ></i>
+            </div>
+        </div>
+        <div class="auto-numbers-table">
+            <app-table
+                [dataItems]="dataItems"
+                [itemSelected]="itemSelected"
+                (onSelectItem)="handleSelectItem($event)"
+                (onOpenDialogDetal)="handleShowDialogDetail()"
+                [columnVisible]="columnVisible"
+            ></app-table>
+        </div>
+    </div>
+    <div class="auto-numbers-footer"></div>
+    <app-dialog-create
+        [options]="createOptions"
+        [visible]="openDialog"
+        header="Define the AutoNumber"
+        (onClose)="handleHideDialog()"
+    ></app-dialog-create>
+    <app-dialog-detail
+        [visible]="openDialogDetail"
+        (onClose)="handleHideDialogDetail()"
+        header="Show Detail Item"
+        [menuTabs]="menuTabs"
+        [itemSelected]="itemSelected"
+        [options]="editOptions"
+    ></app-dialog-detail>
+</div>

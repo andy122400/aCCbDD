@@ -1,0 +1,43 @@
+.auto-numbers-wrapper {
+    font-size: 14px;
+    font-weight: 400;
+    color: #0f1824;
+    .auto-numbers-header {
+        height: 36px;
+        background-color: #08f;
+        border-radius: 6px 6px 0 0;
+        align-items: center;
+        display: flex;
+        padding: 0 10px;
+        color: #fff;
+    }
+    .auto-numbers-body {
+        .top-actions {
+            height: 36px;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            background-color: #f2f9ff;
+            .icon-create {
+                &:hover {
+                    background-color: #08f;
+                    color: #fff;
+                    border-radius: 4px;
+                }
+            }
+            .icon-delete {
+                &:hover {
+                    color: #ff4d4d;
+                }
+            }
+            > div {
+                width: 24px;
+                height: 24px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+        }
+    }
+}

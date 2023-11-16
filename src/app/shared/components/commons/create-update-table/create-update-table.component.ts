@@ -3,6 +3,7 @@ import { BaseInputNumberComponent } from '../base-input-number/base-input-number
 import { BaseDropdownComponent } from '../base-dropdown/base-dropdown.component';
 import { BaseTextAreaComponent } from '../base-text-area/base-text-area.component';
 import { BaseInputTextComponent } from '../base-input-text/base-input-text.component';
+import { CheckboxModule } from 'primeng/checkbox';
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
@@ -10,7 +11,7 @@ import { NgFor, NgIf } from '@angular/common';
     templateUrl: './create-update-table.component.html',
     styleUrls: ['./create-update-table.component.scss'],
     standalone: true,
-    imports: [NgFor, NgIf, BaseInputTextComponent, BaseTextAreaComponent, BaseDropdownComponent, BaseInputNumberComponent]
+    imports: [NgFor, NgIf, BaseInputTextComponent, CheckboxModule, BaseTextAreaComponent, BaseDropdownComponent, BaseInputNumberComponent]
 })
 export class CreateUpdateTableComponent {
 

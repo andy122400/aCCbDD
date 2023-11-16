@@ -30,16 +30,10 @@
                 <app-base-dropdown [data]="dataDropdown[1]"></app-base-dropdown>
             </div>
             <div class="search-value flex">
-                <label>Value</label>
-                <input
-                    class="ml-3"
-                    type="text"
-                    pInputText
-                    [(ngModel)]="searchValue"
-                />
+                <app-base-input-text [data]="dataDropdown[2]" ></app-base-input-text>
             </div>
             <div class="apply-btn">
-                <p-button label="Apply"></p-button>
+                <p-button label="Apply" (onClick)="handleChangeFilter()"></p-button>
             </div>
         </div>
         <div class="lists-table">
@@ -58,6 +52,7 @@
         [visible]="openDialog"
         header="Create List"
         (onClose)="handleHideDialog()"
+        (onSave)="handleSaveItem($event)"
     ></app-dialog-create>
     <app-dialog-detail
         [visible]="openDialogDetail"
@@ -68,3 +63,11 @@
         [options]="editOptions"
     ></app-dialog-detail>
 </div>
+<p-dialog
+  [visible]="loading$ | async"
+  [showHeader]="false"
+  [resizable]="false"
+  [modal]="true"
+  [focusOnShow]="false" >
+  <p-progressSpinner></p-progressSpinner>
+</p-dialog>

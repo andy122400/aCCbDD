@@ -36,15 +36,19 @@ export class AppTopBarComponent extends BaseComponent {
   }
 
   async testToken() {
-    try {
-      const res = await this.apiService.userList()
-      if (res.code === 200) {
-        this.snackBar.showSuccess("Token is working")
-      } else {
-        this.snackBar.showError("Token is expired")
-      }
-    } catch (e) {
-    }
+    // try {
+    //   const res = await this.apiService.getFrList()
+    //   if (res.code === 200) {
+
+    //       console.log("Token",res.data[0].create_date.getDate());
+    //       console.log("Token is working")
+
+
+    //   } else {
+    //     this.snackBar.showError("Token is expired")
+    //   }
+    // } catch (e) {
+    // }
   }
 
   override ngOnInit() {

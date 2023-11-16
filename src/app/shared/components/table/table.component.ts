@@ -29,13 +29,19 @@ export class TableComponent<TypeRow> implements OnChanges {
     columns: string[] = [];
 
     ngOnChanges(changes: SimpleChanges) {
-        this.columns = Object.keys(this.dataItems[0]).filter((field) => {
-            if (this.columnVisible) {
-                return this.columnVisible.includes(field);
-            }
-            return true
-        });
-        this.filteredItems = [...this.dataItems];
+  
+        if(this.dataItems) {
+           this.columns = this.columnVisible;
+        } else {
+            this.columns = Object.keys(this.dataItems[0]).filter((field) => {
+                if (this.columnVisible) {
+                    return this.columnVisible.includes(field);
+                }
+                return true
+            });
+            this.filteredItems = [...this.dataItems];
+        }
+
     }
 
     handleShowDialogDetail(item: TypeRow){

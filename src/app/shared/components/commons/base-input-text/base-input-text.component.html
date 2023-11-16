@@ -1,4 +1,4 @@
-<div class="col flex">
+<div class="col flex" [class.borderTop]="data.borderTop">
     <label
         for="data.id"
         style="
@@ -13,8 +13,7 @@
         type="data.type"
         pInputText 
         [id]="data.id"
-        [name]="data.name"
-        [value]="data.value"
+        [(ngModel)]="data.value"
         [readOnly]="data.readonly"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
         [disabled]="data.readonly"

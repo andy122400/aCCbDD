@@ -65,9 +65,17 @@
                 display: flex;
                 align-items: center;
                 width: calc(100% - 200px * 2 - 100px);
-                input {
-                    width: calc(100% - 50px);
+                ::ng-deep app-base-input-text {
+                    width: 100% !important;
+                    label {
+                        min-width: 40px !important;
+                    }
+                    input {
+                        width: calc(100% - 50px) !important;
+                        height: 42px !important;
+                    }
                 }
+                
             }
             .apply-btn {
                 ::ng-deep button {

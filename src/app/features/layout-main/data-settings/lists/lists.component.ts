@@ -7,100 +7,75 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { BaseDropdownComponent } from '../../../../shared/components/commons/base-dropdown/base-dropdown.component';
 import {Snackbar} from "../../../../shared/services/snackbar.service";
-
-interface IList {
-    "ID": number,
-    "Name": string,
-    "Description": string,
-    "API Name": string,
-    "Criteria": ''
-}
+import BaseComponent from 'src/app/shared/components/base/base.component';
+import { FrListModel, IFrListCreateRequest, IFrListRequest } from 'src/app/shared/services/network/models/frlist.model';
+import { FrListService } from 'src/app/shared/services/fr-list.service';
+import { RippleModule } from 'primeng/ripple';
+import { DialogModule } from 'primeng/dialog';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { AsyncPipe } from '@angular/common';
+import { BaseInputTextComponent } from 'src/app/shared/components/commons/base-input-text/base-input-text.component';
 
 @Component({
     selector: 'app-lists',
     templateUrl: './lists.component.html',
     styleUrls: ['./lists.component.scss'],
     standalone: true,
-    imports: [BaseDropdownComponent, FormsModule, InputTextModule, ButtonModule, TableComponent, DialogCreateComponent, DialogDetailComponent]
+    imports: [BaseDropdownComponent, FormsModule, InputTextModule, ButtonModule, TableComponent, DialogCreateComponent,
+        DialogModule, DialogDetailComponent, RippleModule, ProgressSpinnerModule, AsyncPipe, BaseInputTextComponent]
 })
-export class ListsComponent {
+
+export class ListsComponent extends BaseComponent{
     openDialog: boolean = false;
     openDialogDetail: boolean = false;
-    searchValue: string = '';
-    itemSelected?: IList;
+    itemSelected?: FrListModel;
 
-    private snackbar = inject(Snackbar)
-    columnVisible = ["ID", "Name"]
+    private frListsService = inject(FrListService);
 
-    dataItems: IList[] = [
+    private snackbar = inject(Snackbar);
+
+    columnVisible = ["ID", "Name", "Description", "Category", "Status"];
+
+    dataItems: FrListModel[] = [];
+
+    dataDropdown = [
         {
-        "ID": 1,
-        "Name": "louis luong",
-        "Description": "Hello louis",
-        "API Name": 'fake 1',
-        "Criteria": ''
+            label:'Filter By',
+            id: 1,
+            options: [
+                {id: 1, name: 'Name'},
+                {id: 2, name: 'Description'},
+                {id: 3, name: 'ID'}
+            ] ,
+            selectItem: {id: 1, name: 'Name'} ,
+            readonly: false },
+        {
+            label:'Match If',
+            id: 2,
+            options: [
+                {id: 1, name: 'Start With'},
+                {id: 2, name: 'Show All'},
+                {id: 3, name: 'Contains'},
+                {id: 4, name: 'Ends With'},
+                {id: 5, name: 'Equals'}
+            ] ,
+            selectItem: {id: 1, name: 'Start With'} ,
+            readonly: false 
         },
         {
-        "ID": 2,
-        "Name": "marco duong",
-        "Description": "Hello marco",
-        "API Name": 'fake 2',
-        "Criteria": ''
-        },
-        {
-        "ID": 3,
-        "Name": "chavis nguyen",
-        "Description": "Hello chavis",
-        "API Name": 'fake 3',
-        "Criteria": ''
-        },   {
-        "ID": 4,
-        "Name": "taiwan",
-        "Description": "Hello taiwan team",
-        "API Name": 'fake 4',
-        "Criteria": ''
+            id: 3,
+            label: 'Value',
+            type: 'inputtext',
+            value: '',
+            name: '',
+            readonly: false
         }
-
-    ]
-
-    dataDropdown = [{
-        label:'Filter By',
-        id: 5,
-        options: [
-        {id: 1, name: 'Name'},
-        {id: 2, name: 'Description'},
-        {id: 3, name: 'ID'}
-        ] ,
-        selectItem: {id: 1, name: 'Name'} ,
-        readonly: false },
-        {
-        label:'Match If',
-        id: 5,
-        options: [
-            {id: 1, name: 'Start With'},
-            {id: 2, name: 'Show ALl'},
-            {id: 3, name: 'Contains'},
-            {id: 4, name: 'Ends With'},
-            {id: 5, name: 'Equals'}
-        ] ,
-        selectItem: {id: 1, name: 'Start With'} ,
-        readonly: false }
     ]
     options  = [
-        { type : 'inputtext',label:'Name',id: 1, name: 'a01' , value: '', readonly:false },
-        { type : 'inputtext',label:'API Name',id: 2, name: '' , value: '', readonly:true },
+        { type : 'inputtext',label:'Name',id: 1, name: '' , value: '', readonly:false },
+        { type : 'inputtext',label:'Category',id: 2, name: '' , value: '', readonly:false },
         { type : 'inputtextarea',label:'Description',id: 3, name: '' , value: '', rows: 1 },
-        { type : 'dropdown', label:'Enable',id: 4, options: [
-        {id: 1, name: 'Disable'},
-        {id: 2, name: 'Enable'}
-        ] , selectItem: {id: 2, name: 'Enable'},readonly: false },
-        { type : 'dropdown',label:'List Type',id: 5, options: [
-        {id: 1, name: 'Simple'},
-        {id: 2, name: 'Cascade'},
-        {id: 3, name: 'Dynamic'}
-        ] , selectItem: {id: 1, name: 'Simple'} , readonly: false },
-        { type : 'inputnumber',label:'Criteria',id: 6, name: '' , value: '', readonly: true },
-        // { type : 'inputnumber',label:'Number',id: 7, name: '' , value: 0 , readonly: false },
+        { type : 'inputnumber',label:'Status', id: 4, name: '' , value: '', readonly: true },
     ];
     editOptions  = [
         { type : 'inputtext',label:'Name',id: 1, name: 'a01' , value: '', readonly:false },
@@ -131,30 +106,77 @@ export class ListsComponent {
         { label: 'History' }
     ];
 
-
     handleShowDialog () {
-        this.snackbar.showSuccess("Open dialog of")
         this.openDialog = true;
     }
     handleHideDialog () {
         this.openDialog = false;
     }
 
-    handleShowDialogDetail(item: IList) {
-        this.snackbar.showSuccess(`Open dialog of ${JSON.stringify(item)}`)
+    handleShowDialogDetail(item: FrListModel) {
         this.openDialogDetail = true;
     }
     handleHideDialogDetail () {
         this.openDialogDetail = false;
     }
-    constructor(){
 
-    }
-    handleSelectItem(item: IList){
+    handleSelectItem(item: FrListModel){
         this.itemSelected = item;
     }
-    ngOnInit(): void {
 
+    constructor() {
+        super();
+        this.handleGetLists({ 
+            match_if: 'show_all',
+            field_type: 'description',
+            content: ''
+            }
+        )
+    }
+     
+    override ngOnInit(): void {
+      
+    }
+
+    async handleGetLists(request: IFrListRequest) {
+        try {
+            this.showLoading(true);
+            const res = await this.frListsService.getFrList(request);
+            if(res.data) {
+                this.dataItems = res.data;
+            }
+        } catch(e){
+            console.log("check error :", e);
+        }
+        this.showLoading(false);
+
+    }
+
+    async handleSaveItem(options: any) {
+        const request = {
+            name: options[0].value,
+            category: options[1].value,
+            description: options[2].value,
+            status: options[3].value
+        }
+        try {
+            this.showLoading(true);
+            const res = await this.frListsService.saveItemFrList(request);
+            console.log("check res :", res);
+        } catch(e){
+            console.log("check error :", e);
+        }
+        this.showLoading(false);
+
+    }
+
+    handleChangeFilter(){
+        this.handleGetLists({ 
+            match_if: this.dataDropdown[0].selectItem.name.toLowerCase().trim().replace(' ', ''),
+            field_type: this.dataDropdown[1].selectItem.name.toLowerCase(),
+            content: this.dataDropdown[2].value
+            }
+        )
     }
 
 }

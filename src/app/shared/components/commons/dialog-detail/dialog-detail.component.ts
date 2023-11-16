@@ -29,7 +29,6 @@ export class DialogDetailComponent {
   
   }
   getActiveItem(currentTab: any){
-    console.log("check current tab :", currentTab.target.outerText);
     return this.activeItem = currentTab.item;
   }
 
