@@ -1,5 +1,5 @@
 export interface FrListModel{
-    fr_list_id: number
+    id: number
     name: string
     category: string
     description: string
@@ -9,6 +9,19 @@ export interface FrListModel{
     update_date: string
     update_by: string
     state_void: number
+}
+
+export interface CustomFrListModel{
+    ID: number
+    Name: string
+    Category: string
+    Description: string
+    Status: string
+    createDate: string
+    createBy: string
+    updateDate: string
+    updateBy: string
+    stateVoid: number
 }
 
 export interface IFrListRequest {

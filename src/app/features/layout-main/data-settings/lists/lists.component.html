@@ -13,7 +13,7 @@
                     class="pi pi-plus"
                 ></i>
             </div>
-            <div class="icon-delete">
+            <div class="icon-delete" (click)="handleDeleteItem(itemSelected?.ID)">
                 <i
                     pTooltip="Delete"
                     placeholder="Top"
@@ -48,7 +48,7 @@
     </div>
     <div class="list-footer"></div>
     <app-dialog-create
-        [options]="options"
+        [options]="createOptions"
         [visible]="openDialog"
         header="Create List"
         (onClose)="handleHideDialog()"

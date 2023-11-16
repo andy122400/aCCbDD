@@ -98,4 +98,21 @@ export default class ApiClient {
       method: "GET"
     })
   }
+
+  delete<T, Data = any>(url: string, config?: AxiosRequestConfig<Data>): Promise<BaseResponse<T>> {
+    return this.request({
+      ...config,
+      url,
+      method: "DELETE"
+    })
+  }
+
+  put<T, Data = any>(url: string, data?: Data, config?: AxiosRequestConfig<Data>): Promise<BaseResponse<T>> {
+    return this.request({
+      ...config,
+      url,
+      data,
+      method: "PUT"
+    })
+  }
 }

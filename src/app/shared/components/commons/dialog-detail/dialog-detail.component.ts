@@ -2,13 +2,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CreateUpdateTableComponent } from '../create-update-table/create-update-table.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { DialogModule } from 'primeng/dialog';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-dialog-detail',
     templateUrl: './dialog-detail.component.html',
     styleUrls: ['./dialog-detail.component.scss'],
     standalone: true,
-    imports: [DialogModule, TabMenuModule, CreateUpdateTableComponent]
+    imports: [DialogModule, TabMenuModule, CreateUpdateTableComponent, NgIf]
 })
 export class DialogDetailComponent {
   @Input({required: true}) visible : boolean = false;
@@ -26,10 +27,9 @@ export class DialogDetailComponent {
       if(this.menuTabs){
         this.activeItem = this.menuTabs[0];
       }
-  
   }
   getActiveItem(currentTab: any){
-    return this.activeItem = currentTab.item;
+    return this.activeItem = currentTab;
   }
 
   handleClose(){

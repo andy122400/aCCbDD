@@ -28,9 +28,12 @@ export class TableComponent<TypeRow> implements OnChanges {
     filteredItems: TypeRow[];
     columns: string[] = [];
 
+   ngOnInit(): void {
+
+    
+   }
     ngOnChanges(changes: SimpleChanges) {
-  
-        if(this.dataItems) {
+        if(this.dataItems.length === 0) {
            this.columns = this.columnVisible;
         } else {
             this.columns = Object.keys(this.dataItems[0]).filter((field) => {
@@ -48,6 +51,11 @@ export class TableComponent<TypeRow> implements OnChanges {
         this.onOpenDialogDetail.emit(item)
     }
     handleSelectItem(item: TypeRow){
-        this.onSelectItem.emit(item)
+        if(this.itemSelected === item) {
+            this.onSelectItem.emit(null)
+        } else {
+            this.onSelectItem.emit(item)
+        }
+    
     }
 }

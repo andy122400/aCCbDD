@@ -1,14 +1,40 @@
 <div class="dialog-detail-wrapper">
-    <p-dialog header="demo" [visible]="visible"  [style]="{ width: '70vw', height: '70vh' }" (visibleChange)="handleClose()" modal="modal">
+    <p-dialog [header]="itemSelected?.Name || ''" [visible]="visible"  [style]="{ width: '70vw', height: '70vh' }" (visibleChange)="handleClose()" modal="modal">
         <div class="top-action">
             <div class="icon-delete"> <i class="pi pi-times" style="font-size: 14px"></i></div>
         </div>
         <div class="dialog-body">
-            <p-tabMenu [model]="menuTabs" [activeItem]="activeItem" (click)="getActiveItem($event)">        
+            <p-tabMenu [model]="menuTabs" [activeItem]="activeItem" (activeItemChange)="getActiveItem($event)">        
             </p-tabMenu>
             
         <div class="contents">
-            <app-create-update-table [items]="options"></app-create-update-table>
+            <ng-container *ngIf="activeItem.label === 'General Information' ; else otherType">
+                <app-create-update-table [items]="options"></app-create-update-table>
+            </ng-container>
+            <ng-container *ngIf="activeItem.label === 'List' ; else otherType">     
+                <app-table
+                    [dataItems]="dataItems"
+                    [itemSelected]="itemSelected"
+                    [columnVisible]="columnVisible"
+                    (onSelectItem)="handleSelectItem($event)"
+                    (onOpenDialogDetail)="handleShowDialogDetail($event)"
+            ></app-table>
+            </ng-container>
+            <ng-container *ngIf="activeItem.label === 'Where Used' ; else otherType">    
+                <app-table
+                    [dataItems]="dataItems"
+                    [columnVisible]="columnVisible"
+                ></app-table>
+            </ng-container>
+            <ng-container *ngIf="activeItem.label === 'History' ; else otherType">    
+                <app-table
+                    [dataItems]="dataItems"
+                    [columnVisible]="columnVisible"
+                ></app-table>
+            </ng-container>
+            <ng-template #otherType>
+            </ng-template>
+           
         </div>
         </div>
     </p-dialog>
