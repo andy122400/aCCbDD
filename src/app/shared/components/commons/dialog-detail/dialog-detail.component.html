@@ -12,19 +12,19 @@
                 <app-create-update-table [items]="options"></app-create-update-table>
             </ng-container>
             <ng-container *ngIf="activeItem.label === 'List' ; else otherType">     
-                <app-table
+                <!-- <app-table
                     [dataItems]="dataItems"
                     [itemSelected]="itemSelected"
                     [columnVisible]="columnVisible"
                     (onSelectItem)="handleSelectItem($event)"
                     (onOpenDialogDetail)="handleShowDialogDetail($event)"
-            ></app-table>
+            ></app-table> -->
             </ng-container>
             <ng-container *ngIf="activeItem.label === 'Where Used' ; else otherType">    
-                <app-table
+                <!-- <app-table
                     [dataItems]="dataItems"
                     [columnVisible]="columnVisible"
-                ></app-table>
+                ></app-table> -->
             </ng-container>
             <ng-container *ngIf="activeItem.label === 'History' ; else otherType">    
                 <app-table

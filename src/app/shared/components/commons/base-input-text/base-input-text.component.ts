@@ -10,7 +10,4 @@ import { FormsModule } from '@angular/forms';
 })
 export class BaseInputTextComponent {
     @Input() data: any | undefined;
-    
-    constructor() {
-    }
 }

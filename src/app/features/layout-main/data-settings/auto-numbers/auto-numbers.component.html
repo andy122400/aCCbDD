@@ -1,43 +1,64 @@
-<div class="auto-numbers-wrapper">
-    <div class="auto-numbers-header">
-        <div class="icon-list"><i class="pi pi-list"></i></div>
-        <div class="ml-2">AutoNumbers</div>
+<div
+    class="component-wrapper"
+>
+    <div *ngIf="componentHeader?.length > 0" class="component-header">
+        <div class="ml-2">{{ componentHeader }}</div>
     </div>
-    <div class="auto-numbers-body">
-        <div class="top-actions">
-            <div class="icon-create" (click)="handleShowDialog()">
-                <i
-                    pTooltip="New subclass"
-                    placeholder="Top"
-                    tooltipPosition="top"
-                    class="pi pi-plus"
-                ></i>
-            </div>
-            <div class="icon-delete">
-                <i
-                    pTooltip="Delete"
-                    placeholder="Top"
-                    tooltipPosition="top"
-                    class="pi pi-times"
-                ></i>
+    <div class="component-body">
+        <div *ngIf="topActions" class="top-actions">
+            <ng-container *ngFor="let action of topActions">
+                <div class="icon">
+                    <i
+                        [pTooltip]="action?.data?.text"
+                        placeholder="Top"
+                        tooltipPosition="top"
+                        [class]="
+                            action?.data?.icon === 'ADD'
+                                ? 'pi pi-plus'
+                                : action?.data?.icon === 'DELETE'
+                                ? 'pi pi-times'
+                                : ''
+                        "
+                    ></i>
+                </div>
+            </ng-container>
+        </div>
+        <div *ngIf="filterOptions?.length > 0" class="component-filter">
+            <div *ngFor="let filterItem of filterOptions; let i = index" >
+
+                <div *ngIf="filterItem?.options?.length > 0" [class.match-if]="filterItem.label === 'Match if'"
+                    [class.filter-by]="filterItem.label === 'Filter by'">
+                        <app-base-dropdown
+                            [data]="filterItem"
+                        ></app-base-dropdown>
+                    
+                </div>
+                <div *ngIf="filterItem?.type === 'inputtext'" class="search-value">
+                    <app-base-input-text
+                        [data]="filterItem"
+                    ></app-base-input-text>
+                </div>
+                <div *ngIf="filterItem?.type === 'BUTTON'">
+                    <p-button [label]="filterItem.data.text" (click)="handleChangeFilter()"></p-button>
+                </div>
             </div>
         </div>
-        <div class="auto-numbers-table">
+        <div *ngIf="tableData?.headers" class="lists-table">
             <app-table
-                [dataItems]="dataItems"
+                [data]="tableData"
                 [itemSelected]="itemSelected"
                 (onSelectItem)="handleSelectItem($event)"
-                (onOpenDialogDetal)="handleShowDialogDetail()"
-                [columnVisible]="columnVisible"
+                (onOpenDialogDetail)="handleShowDialogDetail($event)"
             ></app-table>
         </div>
     </div>
-    <div class="auto-numbers-footer"></div>
-    <app-dialog-create
+    <div class="list-footer"></div>
+    <!-- <app-dialog-create
         [options]="createOptions"
         [visible]="openDialog"
-        header="Define the AutoNumber"
+        header="Create List"
         (onClose)="handleHideDialog()"
+        (onSave)="handleSaveItem($event)"
     ></app-dialog-create>
     <app-dialog-detail
         [visible]="openDialogDetail"
@@ -46,5 +67,13 @@
         [menuTabs]="menuTabs"
         [itemSelected]="itemSelected"
         [options]="editOptions"
-    ></app-dialog-detail>
+    ></app-dialog-detail> -->
 </div>
+<p-dialog
+  [visible]="loading$ | async"
+  [showHeader]="false"
+  [resizable]="false"
+  [modal]="true"
+  [focusOnShow]="false" >
+  <p-progressSpinner></p-progressSpinner>
+</p-dialog>

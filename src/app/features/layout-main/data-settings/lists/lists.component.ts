@@ -167,7 +167,7 @@ export class ListsComponent extends BaseComponent{
             // await this.frListsService.getFrList(request).then(res => {
             //     if(res?.data?.length) {
             //         const parseFrList = this.frListsService.parseFrListModel(res.data);
-            //         this.dataItems = parseFrList;
+            //         this.dataItems = parseFrList;  
             //     }
             // });
         } catch(e){

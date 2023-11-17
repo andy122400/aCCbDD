@@ -18,35 +18,30 @@ import { TableModule } from 'primeng/table';
     ],
 })
 export class TableComponent<TypeRow> implements OnChanges {
-    @Input({required: true}) dataItems!: TypeRow[];
+    @Input({required: true}) data!: any;
     @Input() itemSelected?: TypeRow;
-    @Input() columnVisible?: string[];
 
     @Output() onOpenDialogDetail = new EventEmitter<TypeRow>();
     @Output() onSelectItem = new EventEmitter<TypeRow>();
 
-    filteredItems: TypeRow[];
+    filteredItems: TypeRow[] = [];
     columns: string[] = [];
 
-   ngOnInit(): void {
-
-    
+   ngOnInit(): void {    
    }
+   
     ngOnChanges(changes: SimpleChanges) {
-        if(this.dataItems.length === 0) {
-           this.columns = this.columnVisible;
-        } else {
-            this.columns = Object.keys(this.dataItems[0]).filter((field) => {
-                if (this.columnVisible) {
-                    return this.columnVisible.includes(field);
-                }
-                return true
-            });
-            this.filteredItems = [...this.dataItems];
+        if(this.data?.headers?.length) {
+            if(this.data?.data?.length === 0 ) {
+                this.columns = this.data.headers?.map((e: any) => e.label);
+            } else {
+                const headersText = this.data.headers?.map((e: any) => e.key);
+                const allColumns = Object.keys(this.data.data[0]);
+                this.columns = allColumns?.filter((e: any) => headersText?.includes(e)) ;         
+                this.filteredItems = [...this.data.data];
+            }
         }
-
     }
-
     handleShowDialogDetail(item: TypeRow){
         this.onOpenDialogDetail.emit(item)
     }
