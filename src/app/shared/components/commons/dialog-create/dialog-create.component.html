@@ -1,11 +1,12 @@
 <div class="dialog-create-wrapper">
-    <p-dialog [header]="header" [visible]="visible" [style]="{ width: '30vw' }" (visibleChange)="handleClose()" modal="modal">
-        <div class="dialog-body">
-            <app-create-update-table [items]="options"></app-create-update-table>
+    <p-dialog [header]="initForm?.header?.data || 'Form'" [visible]="visible" [style]="{ width: '40vw' }" (visibleChange)="handleClose()" modal="modal">
+        <div *ngIf="initOptions?.length > 0" class="dialog-body">
+            <app-create-update-table [items]="initOptions"></app-create-update-table>
         </div>
-        <div class="bottom-action">
-            <div class="cancel-btn" (click)="handleClose()">Cancel</div>
-            <div class="confirm-btn" (click)="handleSave()">OK</div>
+        <div *ngIf="initActions?.length > 0" class="bottom-action">
+            <div *ngFor="let action of initActions">
+                <div class="action-btn" (click)="handleAction(action)">{{action?.data?.text}}</div>
+            </div>
         </div>
     </p-dialog>
     <router-outlet></router-outlet>

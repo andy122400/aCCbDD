@@ -1,7 +1,6 @@
 import {inject, Injectable} from "@angular/core";
 import {LoginModelRequest, LoginModelResponse} from "./network/models/login.model";
 import ApiClient from "./network/api.client";
-import {FrListModel, IFrListRequest} from "./network/models/frlist.model";
 
 @Injectable({
     providedIn: "root"
@@ -10,11 +9,11 @@ export default class ApiService {
     private axiosClient = inject(ApiClient)
 
     login(request: LoginModelRequest) {
-        return this.axiosClient.post<LoginModelResponse>("/accounts/login", request)
+        return this.axiosClient.post<LoginModelResponse>("/api/accounts/login", request)
     }
 
     userList() {
-        return this.axiosClient.get("/users/list")
+        return this.axiosClient.get("/api/users/list")
     }
 
 }

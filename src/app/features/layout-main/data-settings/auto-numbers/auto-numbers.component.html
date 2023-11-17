@@ -7,7 +7,7 @@
     <div class="component-body">
         <div *ngIf="topActions" class="top-actions">
             <ng-container *ngFor="let action of topActions">
-                <div class="icon">
+                <div class="icon" (click)="handleAction(action)">
                     <i
                         [pTooltip]="action?.data?.text"
                         placeholder="Top"
@@ -53,14 +53,15 @@
         </div>
     </div>
     <div class="list-footer"></div>
-    <!-- <app-dialog-create
-        [options]="createOptions"
+    <app-dialog-create
+        [initForm]="initCreateForm"
         [visible]="openDialog"
         header="Create List"
-        (onClose)="handleHideDialog()"
-        (onSave)="handleSaveItem($event)"
+        (onSave)="handleSaveNewItem($event)"
+        (onClose)="closeDialog()"
+     
     ></app-dialog-create>
-    <app-dialog-detail
+    <!-- <app-dialog-detail
         [visible]="openDialogDetail"
         (onClose)="handleHideDialogDetail()"
         header="Show Detail Item"

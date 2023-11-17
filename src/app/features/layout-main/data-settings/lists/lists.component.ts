@@ -71,6 +71,7 @@ export class ListsComponent extends BaseComponent{
             readonly: false
         }
     ]
+
     createOptions  = [
         { type : 'inputtext',label:'Name',id: 1, name: '' , value: '', readonly:false },
         { type : 'inputtext',label:'Category',id: 2, name: '' , value: '', readonly:false },
